@@ -1,110 +1,116 @@
 # Proof of Habitat Frontend
 
-This is the web interface for the Proof of Habitat project, allowing users to submit and view zero-knowledge proofs of presence.
+Web interface for submitting and viewing zero-knowledge proofs for privacy-preserving location verification.
+
+## Quick Start
+
+1. **Start the development server**:
+```bash
+cd frontend/public
+python3 -m http.server 3000
+```
+
+2. **Open in browser**: Navigate to http://localhost:3000
+
+3. **Connect wallet**: Click "Connect Wallet" and connect your MetaMask wallet configured for Sepolia testnet
+
+4. **Submit proof**: 
+   - Generate a proof using ZoKrates (see `../zokrates/README.md`)
+   - Paste the proof JSON into the text area
+   - Click "Submit Proof"
+
+5. **View proofs**: Click "Refresh Proofs" to see submitted proofs and any co-location matches
+
+## Requirements
+
+- MetaMask or compatible Web3 wallet
+- Sepolia testnet configuration
+- ETH for gas fees (get from Sepolia faucet)
+
+## Contract Addresses (Sepolia)
+
+- **HabitatProof Contract**: `0x73133830c8b55f21f6ccf4b672a54bb4a96ef0ff`
+- **Verifier Contract**: `0x411e5cd2473bf83792346bb174e0684dc9ac36ff`
+
+## Proof Format
+
+The frontend expects proof data in the following JSON format:
+
+```json
+{
+  "scheme": "g16",
+  "curve": "bn128",
+  "proof": {
+    "a": ["0x...", "0x..."],
+    "b": [["0x...", "0x..."], ["0x...", "0x..."]],
+    "c": ["0x...", "0x..."]
+  },
+  "inputs": ["0x...", "0x..."]
+}
+```
 
 ## Features
 
-### 🔑 Wallet Connection
-- Supports multiple wallet connections through WalletConnect
-- Compatible with mobile wallets and browser extensions
-- Automatically handles network switching to Sepolia
-- Displays your connected wallet address
-- Handles network and account changes automatically
-
-### 📤 Submit Proofs
-- Paste your ZK proof JSON into the text area
-- The proof format should include:
-  ```json
-  {
-    "proof": {
-      "a": [...],
-      "b": [[...], [...]],
-      "c": [...]
-    },
-    "inputs": [...]
-  }
-  ```
-- Submits the proof to the smart contract at `0x8d9ae23DEccA195DFC8bE5509677d4fFdb94FFCa` on Sepolia
-- Shows submission status and any errors
-
-### 📥 View Proofs
-- Lists all submitted proofs with:
-  - Proof number
-  - Submitter's address
-  - Timestamp
-  - Device IDs and their distances
-- Auto-refreshes when new proofs are submitted
-- Manual refresh button available
-
-### 🔍 Proof Similarity Detection
-- The smart contract verifies ZK proofs and checks for similarities
-- Similar proofs are visually highlighted:
-  - Proofs with matches have a green background
-  - A "📍 Similar Proofs Found!" section appears under the proof details
-  - Each similar proof is listed with its details in this section
-- Under each matching proof, you'll see:
-  - The matching proof number (e.g., "Proof #42")
-  - The address of who submitted that proof
-  - When that proof was submitted
-- Example of what you'll see:
-  ```
-  Proof #42
-  From: 0x1234...5678
-  Time: March 21, 2024, 15:30:45
-  Devices:
-  • Device 123: 2.50m
-  • Device 456: 1.75m
-  
-  📍 Similar Proofs Found!
-  • Proof #43 by 0x9876...4321
-    Time: March 21, 2024, 15:32:10
-  • Proof #45 by 0xabcd...ef01
-    Time: March 21, 2024, 15:33:22
-  ```
-- The similarity detection happens automatically:
-  - When you submit a new proof
-  - When others submit proofs
-  - When you load or refresh the page
-
-## Technical Details
-
-- Uses ethers.js v6 for blockchain interaction
-- Connects to Sepolia testnet
-- Contract Address: `0x8d9ae23DEccA195DFC8bE5509677d4fFdb94FFCa`
-- Listens for `SimilarityFound` events from the smart contract
-- Maintains a client-side map of proof similarities for efficient display
-
-## Getting Started
-
-1. Have a Web3 wallet ready (mobile or browser)
-2. Get some Sepolia ETH from a faucet
-3. Open the application in your browser
-4. Click "Connect Wallet" and choose your preferred wallet
-5. The app will automatically switch to or add the Sepolia network
-6. You can now submit proofs or view existing ones
-
-## Error Handling
-
-The interface provides clear error messages for common issues:
-- Wallet connection issues
-- Wrong network selected
-- Failed proof submissions
-- Invalid proof format
-- Network connection issues
+- **Wallet Integration**: Connect MetaMask or compatible wallets
+- **Proof Submission**: Submit zero-knowledge proofs to the contract
+- **Proof Verification**: Automatically verifies proofs before submission
+- **Co-location Display**: Shows detected co-locations grouped by time and location buckets
+- **Error Handling**: Detailed error messages for debugging
 
 ## Development
 
-To run locally:
-1. Ensure you have Node.js installed
-2. Install dependencies: `pnpm install`
-3. Get a WalletConnect Project ID from https://cloud.walletconnect.com
-4. Add your Project ID to the `projectId` variable in `index.html`
-5. Start the local server: `pnpm start`
-6. Open `http://localhost:8080` in your browser
+The frontend is a single-page application using:
+- Vanilla JavaScript
+- Web3.js for blockchain interaction
+- No build process required
 
-## Security Notes
+### File Structure
 
-- Never share your private keys
-- The application only interacts with the specified contract on Sepolia
-- All proof verifications happen on-chain
-- Similarity checking is performed by the smart contract, not the frontend 
+```
+frontend/
+├── public/
+│   └── index.html     # Main application file
+├── package.json       # Dependencies for dev server
+└── README.md         # This file
+```
+
+### Using with npm
+
+Alternatively, you can use npm for development:
+
+```bash
+npm install
+npm start
+```
+
+This will start an http-server on port 3000 with CORS enabled.
+
+## Troubleshooting
+
+### Common Issues
+
+1. **"Please connect wallet first"**
+   - Make sure MetaMask is installed and unlocked
+   - Click "Connect Wallet" button
+
+2. **"Contract rejected proof"**
+   - Verify proof format is correct
+   - Check that the proof was generated with valid inputs
+   - Ensure location bucket is within valid range (0-999)
+
+3. **"Insufficient ETH for gas fees"**
+   - Get Sepolia ETH from a faucet
+   - Typical transaction costs ~0.001-0.005 ETH
+
+4. **Network errors**
+   - Ensure MetaMask is configured for Sepolia testnet
+   - Check internet connection
+   - Try refreshing the page
+
+### Debugging
+
+The frontend includes extensive console logging:
+- Open browser developer tools (F12)
+- Check the Console tab for detailed logs
+- Look for "Proof verification result" to see if proof is valid
+- Check "Gas estimation" logs for transaction details 
