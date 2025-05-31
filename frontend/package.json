@@ -1,0 +1,11 @@
+{
+    "name": "proof-of-habitat-frontend",
+    "version": "1.0.0",
+    "description": "Frontend for Proof of Habitat",
+    "scripts": {
+        "start": "http-server public -p 3000 --cors"
+    },
+    "dependencies": {
+        "http-server": "^14.1.1"
+    }
+}

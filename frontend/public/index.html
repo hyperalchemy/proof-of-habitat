@@ -93,15 +93,21 @@
     </div>
 
     <script>
-        const CONTRACT_ADDRESS = '0x411e5cd2473bf83792346bb174e0684dc9ac36ff';
+        const CONTRACT_ADDRESS = '0x73133830c8b55f21f6ccf4b672a54bb4a96ef0ff';
+        const VERIFIER_ADDRESS = '0x411e5cd2473bf83792346bb174e0684dc9ac36ff';
         const CONTRACT_ABI = [
             { "inputs": [], "name": "getProofsCount", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" },
             { "inputs": [{ "internalType": "uint256", "name": "index", "type": "uint256" }], "name": "getProof", "outputs": [{ "internalType": "uint256", "name": "timestamp", "type": "uint256" }, { "internalType": "uint256", "name": "location_bucket", "type": "uint256" }, { "internalType": "address", "name": "prover", "type": "address" }], "stateMutability": "view", "type": "function" },
             { "inputs": [{ "components": [{ "internalType": "uint256[2]", "name": "a", "type": "uint256[2]" }, { "internalType": "uint256[2][2]", "name": "b", "type": "uint256[2][2]" }, { "internalType": "uint256[2]", "name": "c", "type": "uint256[2]" }], "internalType": "struct IVerifier.Proof", "name": "proof", "type": "tuple" }, { "internalType": "uint256[2]", "name": "inputs", "type": "uint256[2]" }], "name": "submitProof", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "nonpayable", "type": "function" }
         ];
 
+        const VERIFIER_ABI = [
+            { "inputs": [{ "components": [{ "internalType": "uint256", "name": "X", "type": "uint256" }, { "internalType": "uint256", "name": "Y", "type": "uint256" }], "internalType": "struct Pairing.G1Point", "name": "a", "type": "tuple" }, { "components": [{ "internalType": "uint256[2]", "name": "X", "type": "uint256[2]" }, { "internalType": "uint256[2]", "name": "Y", "type": "uint256[2]" }], "internalType": "struct Pairing.G2Point", "name": "b", "type": "tuple" }, { "components": [{ "internalType": "uint256", "name": "X", "type": "uint256" }, { "internalType": "uint256", "name": "Y", "type": "uint256" }], "internalType": "struct Pairing.G1Point", "name": "c", "type": "tuple" }], "internalType": "struct Verifier.Proof", "name": "proof", "type": "tuple" }, { "internalType": "uint256[2]", "name": "input", "type": "uint256[2]" }], "name": "verifyTx", "outputs": [{ "internalType": "bool", "name": "r", "type": "bool" }], "stateMutability": "view", "type": "function" }
+        ];
+
         let web3;
         let contract;
+        let verifierContract;
         let userAddress;
 
         async function connectWallet() {
@@ -121,6 +127,9 @@
 
                 // Initialize contract
                 contract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
+
+                // Initialize verifier contract
+                verifierContract = new web3.eth.Contract(VERIFIER_ABI, VERIFIER_ADDRESS);
 
                 showStatus('Connected: ' + userAddress);
                 document.getElementById('connect-button').textContent = 'Connected: ' + userAddress.substring(0, 6) + '...' + userAddress.substring(38);
@@ -229,31 +238,49 @@
                 console.log('Raw input JSON:', input);
                 console.log('Parsed proof data:', JSON.stringify(proofData, null, 2));
 
-                // Format proof according to contract's expected array format
+                // Format proof according to contract's expected array format, exactly like Remix
                 const formattedProof = {
-                    a: proofData.proof.a.map(x => web3.utils.toBN(x)),
+                    a: proofData.proof.a.map(x => web3.utils.toBN(x).toString(10)),  // Convert hex to decimal string
                     b: [
-                        proofData.proof.b[0].map(x => web3.utils.toBN(x)),
-                        proofData.proof.b[1].map(x => web3.utils.toBN(x))
+                        proofData.proof.b[0].map(x => web3.utils.toBN(x).toString(10)),  // Convert hex to decimal string
+                        proofData.proof.b[1].map(x => web3.utils.toBN(x).toString(10))   // Convert hex to decimal string
                     ],
-                    c: proofData.proof.c.map(x => web3.utils.toBN(x))
+                    c: proofData.proof.c.map(x => web3.utils.toBN(x).toString(10))  // Convert hex to decimal string
                 };
 
-                // Convert hex inputs to numbers
-                const inputs = proofData.inputs.map(x => web3.utils.toBN(x));
+                // Convert hex inputs to decimal strings
+                const inputs = proofData.inputs.map(input =>
+                    web3.utils.toBN(input).toString(10)  // Convert hex to decimal string
+                );
 
                 // Debug logging
                 console.log('Formatted proof being sent to contract:', {
-                    proof: {
-                        a: formattedProof.a.map(x => x.toString()),
-                        b: [
-                            formattedProof.b[0].map(x => x.toString()),
-                            formattedProof.b[1].map(x => x.toString())
-                        ],
-                        c: formattedProof.c.map(x => x.toString())
-                    },
-                    inputs: inputs.map(x => x.toString())
+                    proof: formattedProof,
+                    inputs: inputs
                 });
+
+                // Test proof verification directly with verifier contract first
+                try {
+                    console.log('Testing proof verification with verifier contract...');
+                    const verifierProof = {
+                        a: { X: formattedProof.a[0], Y: formattedProof.a[1] },
+                        b: {
+                            X: [formattedProof.b[0][0], formattedProof.b[0][1]],
+                            Y: [formattedProof.b[1][0], formattedProof.b[1][1]]
+                        },
+                        c: { X: formattedProof.c[0], Y: formattedProof.c[1] }
+                    };
+
+                    const isValid = await verifierContract.methods.verifyTx(verifierProof, inputs).call();
+                    console.log('Proof verification result:', isValid);
+
+                    if (!isValid) {
+                        throw new Error('Proof verification failed - invalid proof');
+                    }
+                } catch (verifyError) {
+                    console.error('Verification error:', verifyError);
+                    throw new Error('Proof verification failed: ' + verifyError.message);
+                }
 
                 // Try to estimate gas first
                 try {
@@ -273,6 +300,12 @@
                     console.log('Estimated gas:', gasEstimate);
                 } catch (error) {
                     console.error('Gas estimation error details:', error);
+                    console.error('Error keys:', Object.keys(error));
+                    console.error('Error message:', error.message);
+                    console.error('Error code:', error.code);
+                    console.error('Error data:', error.data);
+                    console.error('Error reason:', error.reason);
+                    console.error('Error transaction:', error.transaction);
 
                     // Try to decode the revert reason
                     if (error.data) {
@@ -290,7 +323,7 @@
                 console.log('Submitting transaction...');
                 const tx = await contract.methods.submitProof(formattedProof, inputs).send({
                     from: userAddress,
-                    gas: 3000000
+                    gas: 5000000  // Increased gas limit
                 });
 
                 console.log('Transaction successful:', tx);
@@ -302,7 +335,28 @@
 
                 // Try to extract more detailed error information
                 if (error.message.includes('execution reverted')) {
-                    errorMessage = 'Contract rejected proof: ' + (error.message.split('execution reverted:')[1]?.trim() || 'Unknown reason');
+                    // Try to get the revert reason from the error data
+                    if (error.data && typeof error.data === 'string') {
+                        try {
+                            // Decode the revert reason if possible
+                            const revertData = error.data;
+                            console.log('Revert data:', revertData);
+
+                            // Try to decode as a string (this is a simplified approach)
+                            if (revertData.length > 10) {
+                                const decoded = web3.utils.hexToAscii('0x' + revertData.slice(10));
+                                console.log('Decoded revert reason:', decoded);
+                                errorMessage = 'Contract rejected proof: ' + decoded;
+                            } else {
+                                errorMessage = 'Contract rejected proof: Invalid proof or verification failed';
+                            }
+                        } catch (decodeError) {
+                            console.log('Could not decode revert reason:', decodeError);
+                            errorMessage = 'Contract rejected proof: Invalid proof or verification failed';
+                        }
+                    } else {
+                        errorMessage = 'Contract rejected proof: Invalid proof or verification failed';
+                    }
                 }
 
                 // Check for other common errors
@@ -310,6 +364,10 @@
                     errorMessage = 'Transaction was rejected by user';
                 } else if (error.code === -32603) {
                     errorMessage = 'Internal JSON-RPC error. Please check the proof format.';
+                } else if (error.message.includes('insufficient funds')) {
+                    errorMessage = 'Insufficient ETH for gas fees';
+                } else if (error.message.includes('nonce too low')) {
+                    errorMessage = 'Nonce too low - please reset your MetaMask account';
                 }
 
                 showStatus('Error submitting proof: ' + errorMessage, true);
