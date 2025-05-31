@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Proof of Habitat</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f0f2f5;
+        }
+
+        .proof {
+            background: white;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            background: #1a73e8;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background: #1557b0;
+        }
+
+        .status {
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .error {
+            background-color: #ff5252;
+            color: white;
+        }
+
+        .success {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        #proofInput {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+
+        .co-location {
+            background: #e3f2fd;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Proof of Habitat</h1>
+    <div class="section">
+        <button onclick="connectWallet()" id="connect-button">Connect Wallet</button>
+        <div id="status" class="status"></div>
+    </div>
+
+    <div class="section">
+        <h2>Submit Proof</h2>
+        <textarea id="proofInput" rows="10" placeholder="Paste your proof JSON here"></textarea>
+        <button onclick="submitProof()">Submit Proof</button>
+    </div>
+
+    <div class="section">
+        <h2>View Proofs</h2>
+        <button onclick="loadProofs()">Refresh Proofs</button>
+        <div id="proofs"></div>
+    </div>
+
+    <script>
+        const CONTRACT_ADDRESS = '0x411e5cd2473bf83792346bb174e0684dc9ac36ff';
+        const CONTRACT_ABI = [
+            { "inputs": [], "name": "getProofsCount", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" },
+            { "inputs": [{ "internalType": "uint256", "name": "index", "type": "uint256" }], "name": "getProof", "outputs": [{ "internalType": "uint256", "name": "timestamp", "type": "uint256" }, { "internalType": "uint256", "name": "location_bucket", "type": "uint256" }, { "internalType": "address", "name": "prover", "type": "address" }], "stateMutability": "view", "type": "function" },
+            { "inputs": [{ "components": [{ "internalType": "uint256[2]", "name": "a", "type": "uint256[2]" }, { "internalType": "uint256[2][2]", "name": "b", "type": "uint256[2][2]" }, { "internalType": "uint256[2]", "name": "c", "type": "uint256[2]" }], "internalType": "struct IVerifier.Proof", "name": "proof", "type": "tuple" }, { "internalType": "uint256[2]", "name": "inputs", "type": "uint256[2]" }], "name": "submitProof", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "nonpayable", "type": "function" }
+        ];
+
+        let web3;
+        let contract;
+        let userAddress;
+
+        async function connectWallet() {
+            try {
+                // Check for modern ethereum provider
+                const provider = window.ethereum || (window.web3 && window.web3.currentProvider);
+                if (!provider) {
+                    throw new Error('Please install MetaMask or another Web3 wallet');
+                }
+
+                // Initialize Web3 with the provider
+                web3 = new Web3(provider);
+
+                // Request accounts access
+                const accounts = await provider.request({ method: 'eth_requestAccounts' });
+                userAddress = accounts[0];
+
+                // Initialize contract
+                contract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
+
+                showStatus('Connected: ' + userAddress);
+                document.getElementById('connect-button').textContent = 'Connected: ' + userAddress.substring(0, 6) + '...' + userAddress.substring(38);
+
+                await loadProofs();
+
+                // Handle account changes
+                provider.on('accountsChanged', function (accounts) {
+                    window.location.reload();
+                });
+
+            } catch (error) {
+                showStatus('Error connecting wallet: ' + error.message, true);
+                console.error('Connection error:', error);
+            }
+        }
+
+        function showStatus(message, isError = false) {
+            const status = document.getElementById('status');
+            status.textContent = message;
+            status.className = isError ? 'status error' : 'status success';
+        }
+
+        async function loadProofs() {
+            try {
+                if (!contract) {
+                    throw new Error('Please connect wallet first');
+                }
+
+                const count = await contract.methods.getProofsCount().call();
+                const proofsDiv = document.getElementById('proofs');
+                proofsDiv.innerHTML = '';
+
+                // Group proofs by time window and location bucket
+                const bucketGroups = {};
+
+                for (let i = 0; i < count; i++) {
+                    const proof = await contract.methods.getProof(i).call();
+                    const timeBucket = Math.floor(proof.timestamp / (15 * 60));
+                    const key = `${timeBucket}-${proof.location_bucket}`;
+
+                    if (!bucketGroups[key]) {
+                        bucketGroups[key] = {
+                            timestamp: proof.timestamp,
+                            location_bucket: proof.location_bucket,
+                            proofs: []
+                        };
+                    }
+                    bucketGroups[key].proofs.push({
+                        index: i,
+                        prover: proof.prover
+                    });
+                }
+
+                // Display proofs grouped by buckets
+                for (const key in bucketGroups) {
+                    const group = bucketGroups[key];
+                    const div = document.createElement('div');
+                    div.className = 'proof';
+
+                    const timeSubmitted = new Date(group.timestamp * 1000);
+                    const timeWindow = new Date(timeSubmitted.getTime() + 15 * 60 * 1000);
+
+                    let html = `
+                        <h3>Location Bucket #${group.location_bucket}</h3>
+                        <p>Time Window: ${timeSubmitted.toLocaleString()} - ${timeWindow.toLocaleString()}</p>
+                        <p>Provers in this location:</p>
+                    `;
+
+                    for (const proof of group.proofs) {
+                        html += `<div class="co-location">Proof #${proof.index}: ${proof.prover}</div>`;
+                    }
+
+                    if (group.proofs.length > 1) {
+                        html += `<p><strong>Co-location detected!</strong> ${group.proofs.length} provers in this location.</p>`;
+                    }
+
+                    div.innerHTML = html;
+                    proofsDiv.appendChild(div);
+                }
+            } catch (error) {
+                showStatus('Error loading proofs: ' + error.message, true);
+                console.error('Load error:', error);
+            }
+        }
+
+        async function submitProof() {
+            try {
+                if (!contract) {
+                    throw new Error('Please connect wallet first');
+                }
+
+                const input = document.getElementById('proofInput').value;
+                let proofData;
+                try {
+                    proofData = JSON.parse(input);
+                } catch (error) {
+                    throw new Error('Invalid JSON format: ' + error.message);
+                }
+
+                // Validate proof structure
+                if (!proofData.proof || !proofData.inputs) {
+                    throw new Error('Invalid proof format: Must contain "proof" and "inputs" fields');
+                }
+
+                console.log('Raw input JSON:', input);
+                console.log('Parsed proof data:', JSON.stringify(proofData, null, 2));
+
+                // Format proof according to contract's expected array format
+                const formattedProof = {
+                    a: proofData.proof.a.map(x => web3.utils.toBN(x)),
+                    b: [
+                        proofData.proof.b[0].map(x => web3.utils.toBN(x)),
+                        proofData.proof.b[1].map(x => web3.utils.toBN(x))
+                    ],
+                    c: proofData.proof.c.map(x => web3.utils.toBN(x))
+                };
+
+                // Convert hex inputs to numbers
+                const inputs = proofData.inputs.map(x => web3.utils.toBN(x));
+
+                // Debug logging
+                console.log('Formatted proof being sent to contract:', {
+                    proof: {
+                        a: formattedProof.a.map(x => x.toString()),
+                        b: [
+                            formattedProof.b[0].map(x => x.toString()),
+                            formattedProof.b[1].map(x => x.toString())
+                        ],
+                        c: formattedProof.c.map(x => x.toString())
+                    },
+                    inputs: inputs.map(x => x.toString())
+                });
+
+                // Try to estimate gas first
+                try {
+                    console.log('Attempting gas estimation with chain ID:', await web3.eth.getChainId());
+                    console.log('Using account:', userAddress);
+
+                    const method = contract.methods.submitProof(formattedProof, inputs);
+
+                    console.log('Method parameters:', JSON.stringify({
+                        proof: formattedProof,
+                        inputs: inputs
+                    }, null, 2));
+
+                    const gasEstimate = await method.estimateGas({
+                        from: userAddress
+                    });
+                    console.log('Estimated gas:', gasEstimate);
+                } catch (error) {
+                    console.error('Gas estimation error details:', error);
+
+                    // Try to decode the revert reason
+                    if (error.data) {
+                        console.log('Error data:', error.data);
+                    }
+
+                    if (error.message.includes('execution reverted')) {
+                        const revertReason = error.message.split('execution reverted:')[1]?.trim() || 'Unknown reason';
+                        throw new Error('Contract rejected proof during gas estimation: ' + revertReason);
+                    }
+                    throw error;
+                }
+
+                // Submit the proof
+                console.log('Submitting transaction...');
+                const tx = await contract.methods.submitProof(formattedProof, inputs).send({
+                    from: userAddress,
+                    gas: 3000000
+                });
+
+                console.log('Transaction successful:', tx);
+                showStatus('Proof submitted successfully! Transaction: ' + tx.transactionHash);
+                await loadProofs();
+            } catch (error) {
+                console.error('Full error object:', error);
+                let errorMessage = error.message;
+
+                // Try to extract more detailed error information
+                if (error.message.includes('execution reverted')) {
+                    errorMessage = 'Contract rejected proof: ' + (error.message.split('execution reverted:')[1]?.trim() || 'Unknown reason');
+                }
+
+                // Check for other common errors
+                if (error.code === 4001) {
+                    errorMessage = 'Transaction was rejected by user';
+                } else if (error.code === -32603) {
+                    errorMessage = 'Internal JSON-RPC error. Please check the proof format.';
+                }
+
+                showStatus('Error submitting proof: ' + errorMessage, true);
+            }
+        }
+    </script>
+</body>
+
+</html>

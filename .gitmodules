@@ -1,0 +1,9 @@
+[submodule "proof-project/lib/forge-std"]
+	path = proof-project/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "proof-project/web-proof-project/lib/forge-std"]
+	path = proof-project/web-proof-project/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "habitat-proof/lib/forge-std"]
+	path = habitat-proof/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std

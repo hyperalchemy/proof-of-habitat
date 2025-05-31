@@ -1,0 +1,21 @@
+{
+  "name": "proof-of-habitat",
+  "version": "1.0.0",
+  "description": "Proof of Habitat - Ethereum smart contract interface",
+  "scripts": {
+    "node": "hardhat node",
+    "compile": "hardhat compile",
+    "deploy": "hardhat run scripts/deploy.js --network localhost",
+    "dev": "pnpm exec http-server frontend/public -p 3000"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "hardhat": "^2.24.1",
+    "http-server": "^14.1.1"
+  },
+  "dependencies": {
+    "ethers": "^6.7.0"
+  }
+}

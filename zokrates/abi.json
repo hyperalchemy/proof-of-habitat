@@ -1,0 +1,72 @@
+{
+  "inputs": [
+    {
+      "name": "device1",
+      "public": false,
+      "type": "field"
+    },
+    {
+      "name": "distance1",
+      "public": false,
+      "type": "field"
+    },
+    {
+      "name": "device2",
+      "public": false,
+      "type": "field"
+    },
+    {
+      "name": "distance2",
+      "public": false,
+      "type": "field"
+    },
+    {
+      "name": "device3",
+      "public": false,
+      "type": "field"
+    },
+    {
+      "name": "distance3",
+      "public": false,
+      "type": "field"
+    },
+    {
+      "name": "device4",
+      "public": false,
+      "type": "field"
+    },
+    {
+      "name": "distance4",
+      "public": false,
+      "type": "field"
+    },
+    {
+      "name": "device5",
+      "public": false,
+      "type": "field"
+    },
+    {
+      "name": "distance5",
+      "public": false,
+      "type": "field"
+    },
+    {
+      "name": "device6",
+      "public": false,
+      "type": "field"
+    },
+    {
+      "name": "distance6",
+      "public": false,
+      "type": "field"
+    },
+    {
+      "name": "rfmedium",
+      "public": true,
+      "type": "field"
+    }
+  ],
+  "output": {
+    "type": "field"
+  }
+}

@@ -1,0 +1,6 @@
+{
+    "verifier_contract": "0x5ddb2ff26a5f1895591f09b24438a8ff98fecb8b",
+    "habitat_proof_contract": "0x05cb77206156a2438def1722dd44eb5b7bba786e",
+    "network": "sepolia",
+    "chain_id": 11155111
+}

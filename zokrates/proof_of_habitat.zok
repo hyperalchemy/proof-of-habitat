@@ -1,0 +1,89 @@
+// proof_of_habitat.zok
+// Privacy-preserving ZoKrates program for Proof of Habitat
+
+// Import hash function for device ID hashing
+from "hashes/sha256/512bitPacked" import main as sha256packed;
+
+// Helper function to compute distance bucket (0: 0-5m, 1: 5-15m, 2: 15m+)
+def get_distance_bucket(field distance) -> field {
+    // Convert distance from cm to m (divide by 100)
+    field distance_m = distance / 100;
+    
+    // Return bucket directly using if expression
+    return if distance_m < 5 { 0 } else { 
+           if distance_m < 15 { 1 } else { 2 } 
+           };
+}
+
+// Helper function to combine device hashes into a location bucket
+def compute_location_bucket(
+    field[2] hash1, field[2] hash2, field[2] hash3,
+    field[2] hash4, field[2] hash5, field[2] hash6,
+    field bucket1, field bucket2, field bucket3,
+    field bucket4, field bucket5, field bucket6
+) -> field {
+    // Combine hash components using addition and multiplication
+    // This maintains uniqueness properties while using only field operations
+    field hash_combined = (hash1[0] + hash2[0] * 2 + hash3[0] * 3 + hash4[0] * 5 + hash5[0] * 7 + hash6[0] * 11) +
+                         (hash1[1] + hash2[1] * 13 + hash3[1] * 17 + hash4[1] * 19 + hash5[1] * 23 + hash6[1] * 29);
+    
+    // Combine with distance buckets using prime multipliers to ensure good distribution
+    field combined = hash_combined + 
+                    (bucket1 * 31 + bucket2 * 37 + bucket3 * 41 + 
+                     bucket4 * 43 + bucket5 * 47 + bucket6 * 53);
+    
+    // Get a number between 0 and 999 using division and multiplication
+    field scale = combined / 1000;
+    field scaled = combined - (scale * 1000);
+    
+    return scaled;
+}
+
+def main(
+    // Private inputs - actual device data
+    private field device1, private field distance1,
+    private field device2, private field distance2,
+    private field device3, private field distance3,
+    private field device4, private field distance4,
+    private field device5, private field distance5,
+    private field device6, private field distance6,
+    
+    // Public inputs
+    field rfmedium  // 1 = Bluetooth
+) -> field {
+    // 1. Verify RF medium
+    assert(rfmedium == 1); // 1 = Bluetooth
+
+    // 2. Verify distances are reasonable
+    assert(distance1 < 5000); // 50m in cm
+    assert(distance2 < 5000);
+    assert(distance3 < 5000);
+    assert(distance4 < 5000);
+    assert(distance5 < 5000);
+    assert(distance6 < 5000);
+
+    // 3. Hash each device ID
+    field[2] hash1 = sha256packed([0, 0, 0, device1]);
+    field[2] hash2 = sha256packed([0, 0, 0, device2]);
+    field[2] hash3 = sha256packed([0, 0, 0, device3]);
+    field[2] hash4 = sha256packed([0, 0, 0, device4]);
+    field[2] hash5 = sha256packed([0, 0, 0, device5]);
+    field[2] hash6 = sha256packed([0, 0, 0, device6]);
+
+    // 4. Convert distances to buckets
+    field bucket1 = get_distance_bucket(distance1);
+    field bucket2 = get_distance_bucket(distance2);
+    field bucket3 = get_distance_bucket(distance3);
+    field bucket4 = get_distance_bucket(distance4);
+    field bucket5 = get_distance_bucket(distance5);
+    field bucket6 = get_distance_bucket(distance6);
+
+    // 5. Compute location bucket from device hashes and distance buckets
+    field location_bucket = compute_location_bucket(
+        hash1, hash2, hash3, hash4, hash5, hash6,
+        bucket1, bucket2, bucket3, bucket4, bucket5, bucket6
+    );
+
+    // Return only location bucket
+    return location_bucket;
+}

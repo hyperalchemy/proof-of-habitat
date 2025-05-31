@@ -1,0 +1,65 @@
+# Sensitive data files
+data/raw_ble_data*.json
+data/input*.json
+data/proof*.json
+
+# Environment files
+.env
+.env.*
+
+# Dependencies
+node_modules/
+**/node_modules/
+.pnpm-store/
+se2-temp/
+
+# Hardhat
+cache/
+artifacts/
+
+# Build outputs
+dist/
+build/
+out/
+
+# IDE and system files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Testing
+coverage/
+coverage.json
+typechain/
+typechain-types/
+
+# ZoKrates
+zokrates/out
+zokrates/out.r1cs
+zokrates/out.wtns
+zokrates/proving.key
+zokrates/verification.key
+zokrates/*.json
+
+# Large generated files
+zokrates/out
+zokrates/out.r1cs
+zokrates/proving.key
+zokrates/out.wtns
+zokrates/witness
+zokrates/verification.key
+zokrates/proof.json
+
+# Symlinks
+frontend/public/node_modules
+
+# Existing web-proof-project ignores are maintained in its own .gitignore 
