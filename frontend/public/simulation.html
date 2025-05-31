@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Proof of Habitat</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 16px;
+        }
+
+        button:disabled {
+            background: #cccccc;
+        }
+
+        #status {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+        .error {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        .success {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .info {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .proof-item {
+            background: #f5f5f5;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border-left: 4px solid #4CAF50;
+        }
+
+        .match-item {
+            background: #e3f2fd;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border-left: 4px solid #2196F3;
+        }
+
+        #proofInput {
+            width: 100%;
+            height: 150px;
+            margin: 10px 0;
+            padding: 10px;
+            font-family: monospace;
+            background: #f8f9fa;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 8px;
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .status-badge.pending {
+            background: #fff3e0;
+            color: #e65100;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Proof of Habitat</h1>
+
+    <div>
+        <button onclick="connect()" id="connectBtn" disabled>Connected</button>
+        <button onclick="loadProofs()" id="loadBtn">Load Proofs</button>
+    </div>
+
+    <div id="status" class="success">Proof Generated Successfully!</div>
+
+    <div id="proofSection">
+        <h3>Your Generated Proof</h3>
+        <textarea id="proofInput" readonly>
+{
+  "scheme": "g16",
+  "curve": "bn128",
+  "proof": {
+    "a": ["0x2a41c913c43d092a91..." ,"0x1f82d5238761c405b8..."],
+    "b": [
+      ["0x0d6c8e209c96a1df3c...", "0x2f9b2a434b6c0c5e1d..."],
+      ["0x1c92b5e6c874c8f23a...", "0x0a85d4e9f3e378c512..."]
+    ],
+    "c": ["0x2e89e47f8b6c0a1d5b...", "0x1f73c8b4a92d6e0584..."]
+  },
+  "inputs": [
+    "0x000000000000000000000000000000000000000000000000000000000001a4d1",
+    "0x0000000000000000000000000000000000000000000000000000000000000001"
+  ]
+}</textarea>
+    </div>
+
+    <div id="proofs">
+        <div class="match-item">
+            <h3>Match Found!</h3>
+            <p>A co-location match has been detected with the following parameters:</p>
+            <ul>
+                <li><strong>Location Bucket:</strong> #1337</li>
+                <li><strong>Time Window:</strong> 13:45 - 13:50</li>
+                <li><strong>Participants:</strong> 2 users (You and 0x742d35Cc6634C0532925a3b844Bc454e4438f44e)</li>
+                <li><strong>Status:</strong> Verified on-chain</li>
+            </ul>
+        </div>
+
+        <div class="proof-item">
+            <h3>Match Details</h3>
+            <p>The following proofs contributed to this match:</p>
+            <ul>
+                <li>Your proof at 13:45:22</li>
+                <li>0x742d35Cc6634C0532925a3b844Bc454e4438f44e's proof at 13:47:15</li>
+            </ul>
+            <p><strong>Verification Status:</strong> Both proofs have been verified by the ZK-SNARK circuit and
+                confirmed on the Sepolia testnet.</p>
+        </div>
+    </div>
+
+    <script>
+        // Just for visual consistency with index.html
+        document.addEventListener('DOMContentLoaded', function () {
+            const status = document.getElementById('status');
+            status.style.opacity = '0';
+            setTimeout(() => {
+                status.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+
+</html>

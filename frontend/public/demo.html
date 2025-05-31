@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Proof of Habitat - Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f9f9f9;
+        }
+
+        .demo-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .proof-example {
+            background: #e8f5e8;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border-left: 4px solid #4CAF50;
+        }
+
+        .co-location {
+            background: #e3f2fd;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border-left: 4px solid #2196F3;
+        }
+
+        button {
+            background: #1a73e8;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        button:hover {
+            background: #1557b0;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline-item {
+            padding: 10px 20px;
+            margin: 10px 0;
+            background: white;
+            border-radius: 4px;
+            border-left: 3px solid #1a73e8;
+            position: relative;
+        }
+
+        .privacy-demo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .location-map {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            min-height: 200px;
+        }
+
+        .device-list {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .device {
+            background: white;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .device.active {
+            background: #e8f5e8;
+            border-left: 3px solid #4CAF50;
+        }
+
+        .zk-proof-visual {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            .privacy-demo {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Proof of Habitat - Interactive Demo</h1>
+    <p><em>Experience how privacy-first location verification works</em></p>
+
+    <div class="demo-section">
+        <h2>🎯 What is Proof of Habitat?</h2>
+        <p>Proof of Habitat allows you to prove you were at a specific location at a specific time without revealing
+            your identity or exact location. It uses zero-knowledge proofs and Bluetooth Low Energy (BLE) signals.</p>
+
+        <div class="zk-proof-visual">
+            <h3>Zero-Knowledge Magic</h3>
+            <p>Prove you know something without revealing what you know</p>
+            <button onclick="showZKDemo()">See How It Works</button>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h2>📱 Step 1: BLE Signal Detection</h2>
+        <p>Your device scans for nearby Bluetooth signals and creates a unique fingerprint of the location.</p>
+
+        <div class="privacy-demo">
+            <div class="location-map">
+                <h3>Location: Coffee Shop</h3>
+                <div style="margin: 20px 0;">
+                    <div style="width: 50px; height: 50px; background: #4CAF50; border-radius: 50%; margin: 0 auto;">
+                    </div>
+                    <p><strong>You are here</strong></p>
+                </div>
+                <button onclick="scanDevices()">Scan for BLE Devices</button>
+            </div>
+
+            <div class="device-list">
+                <h3>Detected BLE Devices</h3>
+                <div id="device-list">
+                    <p>Click "Scan for BLE Devices" to detect nearby devices</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h2>🔒 Step 2: Generate Zero-Knowledge Proof</h2>
+        <p>Your device creates a cryptographic proof that you detected these signals without revealing the actual signal
+            data.</p>
+
+        <div style="background: #f5f5f5; padding: 15px; border-radius: 4px; margin: 10px 0;">
+            <strong>Input:</strong> BLE signal fingerprint + timestamp<br>
+            <strong>Output:</strong> Zero-knowledge proof (no personal data revealed)
+        </div>
+
+        <button onclick="generateProof()">Generate ZK Proof</button>
+        <div id="proof-output"></div>
+    </div>
+
+    <div class="demo-section">
+        <h2>⛓️ Step 3: Submit to Blockchain</h2>
+        <p>The proof is submitted to the blockchain where it can be verified without revealing your identity.</p>
+
+        <button onclick="simulateSubmission()">Simulate Blockchain Submission</button>
+        <div id="submission-result"></div>
+    </div>
+
+    <div class="demo-section">
+        <h2>🤝 Step 4: Co-location Detection</h2>
+        <p>When multiple people submit proofs from the same location bucket within a time window, co-location is
+            detected!</p>
+
+        <div id="co-location-demo">
+            <div class="proof-example">
+                <strong>Your Proof</strong><br>
+                Location Bucket: #1337<br>
+                Time: 2:30 PM - 2:45 PM<br>
+                Status: Waiting for others...
+            </div>
+        </div>
+
+        <button onclick="simulateCoLocation()">Simulate Others Arriving</button>
+    </div>
+
+    <div class="demo-section">
+        <h2>🎭 Privacy Guarantees</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <strong>❌ What we DON'T know:</strong>
+                <ul>
+                    <li>Your exact location coordinates</li>
+                    <li>Your identity or wallet address</li>
+                    <li>The specific devices you detected</li>
+                    <li>Any personal information</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <strong>✅ What we CAN prove:</strong>
+                <ul>
+                    <li>You were in the same general area as others</li>
+                    <li>You were there at approximately the same time</li>
+                    <li>Your proof is cryptographically valid</li>
+                    <li>No double-spending of location proofs</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h2>🚀 Try It Yourself</h2>
+        <p>Ready to create real proofs? Use the ZoKrates circuit to generate your own proofs!</p>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <button onclick="window.open('test.html', '_blank')">Test Connection</button>
+            <button onclick="window.open('index.html', '_blank')">Submit Real Proof</button>
+            <button onclick="window.open('https://github.com/your-repo/proof-of-habitat', '_blank')">View Code</button>
+        </div>
+    </div>
+
+    <script>
+        function scanDevices() {
+            const deviceList = document.getElementById('device-list');
+            const devices = [
+                { name: 'iPhone_Coffee', rssi: -45, mac: 'XX:XX:XX:XX:XX:01' },
+                { name: 'Samsung_Guest', rssi: -38, mac: 'XX:XX:XX:XX:XX:02' },
+                { name: 'MacBook_Barista', rssi: -52, mac: 'XX:XX:XX:XX:XX:03' },
+                { name: 'Pixel_Customer', rssi: -41, mac: 'XX:XX:XX:XX:XX:04' },
+                { name: 'iPad_Register', rssi: -35, mac: 'XX:XX:XX:XX:XX:05' }
+            ];
+
+            deviceList.innerHTML = '<h4>Scanning...</h4>';
+
+            setTimeout(() => {
+                let html = '<h4>Found Devices:</h4>';
+                devices.forEach(device => {
+                    html += `
+                        <div class="device active">
+                            <div>
+                                <strong>${device.name}</strong><br>
+                                <small>RSSI: ${device.rssi} dBm</small>
+                            </div>
+                            <div style="color: #4CAF50;">✓</div>
+                        </div>
+                    `;
+                });
+                deviceList.innerHTML = html;
+            }, 2000);
+        }
+
+        function generateProof() {
+            const output = document.getElementById('proof-output');
+            output.innerHTML = '<p>Generating zero-knowledge proof...</p>';
+
+            setTimeout(() => {
+                output.innerHTML = `
+                    <div style="background: #e8f5e8; padding: 15px; border-radius: 4px; margin: 10px 0;">
+                        <h4>✅ Zero-Knowledge Proof Generated!</h4>
+                        <strong>Proof Hash:</strong> 0x1a2b3c4d5e6f...<br>
+                        <strong>Location Bucket:</strong> #1337<br>
+                        <strong>Timestamp:</strong> ${new Date().toLocaleString()}<br>
+                        <strong>Size:</strong> 256 bytes<br>
+                        <em>Contains no personal or location data!</em>
+                    </div>
+                `;
+            }, 3000);
+        }
+
+        function simulateSubmission() {
+            const result = document.getElementById('submission-result');
+            result.innerHTML = '<p>Submitting to blockchain...</p>';
+
+            setTimeout(() => {
+                result.innerHTML = `
+                    <div style="background: #e8f5e8; padding: 15px; border-radius: 4px; margin: 10px 0;">
+                        <h4>✅ Proof Submitted Successfully!</h4>
+                        <strong>Transaction Hash:</strong> 0xabcd1234...<br>
+                        <strong>Block:</strong> #2,847,395<br>
+                        <strong>Gas Used:</strong> 234,567<br>
+                        <strong>Network:</strong> Sepolia Testnet
+                    </div>
+                `;
+            }, 2500);
+        }
+
+        function simulateCoLocation() {
+            const demo = document.getElementById('co-location-demo');
+
+            setTimeout(() => {
+                demo.innerHTML += `
+                    <div class="proof-example">
+                        <strong>Alice's Proof</strong><br>
+                        Location Bucket: #1337<br>
+                        Time: 2:32 PM - 2:47 PM<br>
+                        Status: ✅ Confirmed
+                    </div>
+                `;
+            }, 1000);
+
+            setTimeout(() => {
+                demo.innerHTML += `
+                    <div class="proof-example">
+                        <strong>Bob's Proof</strong><br>
+                        Location Bucket: #1337<br>
+                        Time: 2:35 PM - 2:50 PM<br>
+                        Status: ✅ Confirmed
+                    </div>
+                `;
+            }, 2000);
+
+            setTimeout(() => {
+                demo.innerHTML += `
+                    <div class="co-location" style="margin-top: 20px;">
+                        <h4>🎯 Co-location Detected!</h4>
+                        <p><strong>3 people</strong> were in the same location bucket during overlapping time windows!</p>
+                        <ul>
+                            <li>Location Bucket: #1337</li>
+                            <li>Time Window: 2:30 PM - 2:50 PM</li>
+                            <li>Participants: You, Alice, Bob</li>
+                            <li>Privacy: All identities remain anonymous</li>
+                        </ul>
+                    </div>
+                `;
+            }, 3000);
+        }
+
+        function showZKDemo() {
+            alert(`Zero-Knowledge Proof Demo:
+
+🔍 Traditional Proof: "I was at Starbucks on Main St at 2:30 PM"
+   - Reveals exact location
+   - Reveals your identity
+   - No privacy
+
+🎯 Zero-Knowledge Proof: "I know the BLE fingerprint of location #1337 at time window T"
+   - Proves you were somewhere
+   - Doesn't reveal where
+   - Doesn't reveal who you are
+   - Cryptographically verifiable
+
+This is the magic of zero-knowledge proofs!`);
+        }
+
+        // Auto-start the demo
+        window.addEventListener('load', () => {
+            console.log('Proof of Habitat Demo loaded!');
+        });
+    </script>
+</body>
+
+</html>

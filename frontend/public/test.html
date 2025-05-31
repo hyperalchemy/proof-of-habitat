@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Proof of Habitat - Connection Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+
+        .success {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .error {
+            background-color: #ff5252;
+            color: white;
+        }
+
+        .info {
+            background-color: #2196F3;
+            color: white;
+        }
+
+        button {
+            background: #1a73e8;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Proof of Habitat - Connection Test</h1>
+
+    <button onclick="toggleConnection()" id="connect-button">Connect Wallet</button>
+    <button onclick="loadProofs()" id="load-button" disabled>Load Proofs</button>
+
+    <h3>Submit Proof</h3>
+    <textarea id="proofInput" rows="10"
+        style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; font-family: monospace; font-size: 12px;"
+        placeholder='Paste your ZoKrates proof JSON here. Example:
+{
+  "scheme": "g16",
+  "curve": "bn128", 
+  "proof": {
+    "a": ["0x...", "0x..."],
+    "b": [["0x...", "0x..."], ["0x...", "0x..."]],
+    "c": ["0x...", "0x..."]
+  },
+  "inputs": ["0x...1", "0x...0"]
+}'></textarea>
+    <button onclick="submitProof()" id="submit-button" disabled>Submit Proof</button>
+
+    <div id="status"></div>
+    <div id="results"></div>
+
+    <script>
+        const CONTRACT_ADDRESS = '0x73133830c8b55f21f6ccf4b672a54bb4a96ef0ff';
+        const VERIFIER_ADDRESS = '0x411e5cd2473bf83792346bb174e0684dc9ac36ff';
+        const CONTRACT_ABI = [
+            { "inputs": [], "name": "getProofsCount", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" },
+            { "inputs": [{ "internalType": "uint256", "name": "index", "type": "uint256" }], "name": "getProof", "outputs": [{ "internalType": "uint256", "name": "timestamp", "type": "uint256" }, { "internalType": "uint256", "name": "location_bucket", "type": "uint256" }, { "internalType": "address", "name": "prover", "type": "address" }], "stateMutability": "view", "type": "function" },
+            { "inputs": [{ "components": [{ "internalType": "uint256[2]", "name": "a", "type": "uint256[2]" }, { "internalType": "uint256[2][2]", "name": "b", "type": "uint256[2][2]" }, { "internalType": "uint256[2]", "name": "c", "type": "uint256[2]" }], "internalType": "struct IVerifier.Proof", "name": "proof", "type": "tuple" }, { "internalType": "uint256[2]", "name": "inputs", "type": "uint256[2]" }], "name": "submitProof", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "nonpayable", "type": "function" }
+        ];
+
+        const VERIFIER_ABI = [
+            { "inputs": [{ "components": [{ "internalType": "uint256", "name": "X", "type": "uint256" }, { "internalType": "uint256", "name": "Y", "type": "uint256" }], "internalType": "struct Pairing.G1Point", "name": "a", "type": "tuple" }, { "components": [{ "internalType": "uint256[2]", "name": "X", "type": "uint256[2]" }, { "internalType": "uint256[2]", "name": "Y", "type": "uint256[2]" }], "internalType": "struct Pairing.G2Point", "name": "b", "type": "tuple" }, { "components": [{ "internalType": "uint256", "name": "X", "type": "uint256" }, { "internalType": "uint256", "name": "Y", "type": "uint256" }], "internalType": "struct Pairing.G1Point", "name": "c", "type": "tuple" }], "internalType": "struct Verifier.Proof", "name": "proof", "type": "tuple" }, { "internalType": "uint256[2]", "name": "input", "type": "uint256[2]" }], "name": "verifyTx", "outputs": [{ "internalType": "bool", "name": "r", "type": "bool" }], "stateMutability": "view", "type": "function" }
+        ];
+
+        let web3;
+        let contract;
+        let verifierContract;
+        let userAddress;
+        let isConnected = false;
+
+        function showStatus(message, type = 'info') {
+            document.getElementById('status').innerHTML = `<div class="status ${type}">${message}</div>`;
+        }
+
+        async function toggleConnection() {
+            if (isConnected) {
+                disconnect();
+            } else {
+                await connectWallet();
+            }
+        }
+
+        function disconnect() {
+            web3 = null;
+            contract = null;
+            verifierContract = null;
+            userAddress = null;
+            isConnected = false;
+
+            document.getElementById('connect-button').textContent = 'Connect Wallet';
+            document.getElementById('load-button').disabled = true;
+            document.getElementById('submit-button').disabled = true;
+
+            showStatus('Disconnected', 'info');
+            document.getElementById('results').innerHTML = '';
+        }
+
+        async function connectWallet() {
+            try {
+                showStatus('Connecting...', 'info');
+
+                // Check if MetaMask is available
+                if (!window.ethereum) {
+                    throw new Error('MetaMask not found');
+                }
+
+                // Initialize Web3
+                web3 = new Web3(window.ethereum);
+
+                // Request account access
+                const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                userAddress = accounts[0];
+
+                // Check network
+                const chainId = await web3.eth.getChainId();
+                if (chainId !== 11155111) {
+                    throw new Error(`Wrong network. Expected Sepolia (11155111), got ${chainId}`);
+                }
+
+                // Initialize contracts
+                contract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
+                verifierContract = new web3.eth.Contract(VERIFIER_ABI, VERIFIER_ADDRESS);
+
+                // Test contract call
+                const count = await contract.methods.getProofsCount().call();
+
+                isConnected = true;
+                document.getElementById('connect-button').textContent = 'Disconnect';
+                document.getElementById('load-button').disabled = false;
+                document.getElementById('submit-button').disabled = false;
+
+                showStatus(`✅ Connected successfully! Address: ${userAddress.substring(0, 6)}...${userAddress.substring(38)}, Network: Sepolia, Proofs: ${count}`, 'success');
+
+            } catch (error) {
+                showStatus(`❌ Connection failed: ${error.message}`, 'error');
+                console.error('Connection error:', error);
+                disconnect();
+            }
+        }
+
+        async function loadProofs() {
+            try {
+                if (!isConnected || !contract) {
+                    throw new Error('Please connect wallet first');
+                }
+
+                showStatus('Loading proofs...', 'info');
+
+                const count = await contract.methods.getProofsCount().call();
+                const resultsDiv = document.getElementById('results');
+
+                if (count == 0) {
+                    resultsDiv.innerHTML = '<p>No proofs found on contract.</p>';
+                    showStatus('No proofs found', 'info');
+                    return;
+                }
+
+                let html = `<h3>Found ${count} proofs:</h3>`;
+
+                for (let i = 0; i < count; i++) {
+                    const proof = await contract.methods.getProof(i).call();
+                    const date = new Date(proof.timestamp * 1000);
+                    const isYours = proof.prover.toLowerCase() === userAddress.toLowerCase();
+
+                    html += `
+                        <div style="border: 1px solid #ccc; padding: 10px; margin: 10px 0; border-radius: 4px; ${isYours ? 'background: #e8f5e8;' : ''}">
+                            <strong>Proof #${i}</strong> ${isYours ? '(YOURS)' : ''}
+                            <br>Address: ${proof.prover}
+                            <br>Location Bucket: ${proof.location_bucket}
+                            <br>Timestamp: ${date.toLocaleString()}
+                        </div>
+                    `;
+                }
+
+                resultsDiv.innerHTML = html;
+                showStatus(`✅ Loaded ${count} proofs successfully`, 'success');
+
+            } catch (error) {
+                showStatus(`❌ Failed to load proofs: ${error.message}`, 'error');
+                console.error('Load error:', error);
+            }
+        }
+
+        async function submitProof() {
+            try {
+                if (!isConnected || !contract) {
+                    throw new Error('Please connect wallet first');
+                }
+
+                const input = document.getElementById('proofInput').value.trim();
+                if (!input) {
+                    throw new Error('Please paste your proof JSON');
+                }
+
+                let proofData;
+                try {
+                    proofData = JSON.parse(input);
+                } catch (error) {
+                    throw new Error('Invalid JSON format');
+                }
+
+                if (!proofData.proof || !proofData.inputs) {
+                    throw new Error('Invalid proof format');
+                }
+
+                showStatus('Formatting proof...', 'info');
+
+                const formattedProof = {
+                    a: proofData.proof.a.map(x => web3.utils.toBN(x).toString(10)),
+                    b: [
+                        proofData.proof.b[0].map(x => web3.utils.toBN(x).toString(10)),
+                        proofData.proof.b[1].map(x => web3.utils.toBN(x).toString(10))
+                    ],
+                    c: proofData.proof.c.map(x => web3.utils.toBN(x).toString(10))
+                };
+
+                const inputs = proofData.inputs.map(input => web3.utils.toBN(input).toString(10));
+
+                showStatus('Verifying proof...', 'info');
+
+                const verifierProof = {
+                    a: { X: formattedProof.a[0], Y: formattedProof.a[1] },
+                    b: {
+                        X: [formattedProof.b[0][0], formattedProof.b[0][1]],
+                        Y: [formattedProof.b[1][0], formattedProof.b[1][1]]
+                    },
+                    c: { X: formattedProof.c[0], Y: formattedProof.c[1] }
+                };
+
+                const isValid = await verifierContract.methods.verifyTx(verifierProof, inputs).call();
+                if (!isValid) {
+                    throw new Error('Proof verification failed');
+                }
+
+                showStatus('Submitting to blockchain...', 'info');
+
+                const tx = await contract.methods.submitProof(formattedProof, inputs).send({
+                    from: userAddress,
+                    gas: 5000000
+                });
+
+                showStatus(`✅ Proof submitted: ${tx.transactionHash}`, 'success');
+                document.getElementById('proofInput').value = '';
+                await loadProofs();
+
+            } catch (error) {
+                let errorMessage = error.message;
+                if (error.code === 4001) {
+                    errorMessage = 'Transaction rejected';
+                } else if (error.message.includes('insufficient funds')) {
+                    errorMessage = 'Insufficient ETH for gas';
+                }
+
+                showStatus(`❌ Submit failed: ${errorMessage}`, 'error');
+                console.error('Submit error:', error);
+            }
+        }
+    </script>
+</body>
+
+</html>

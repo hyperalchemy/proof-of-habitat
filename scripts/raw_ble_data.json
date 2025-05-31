@@ -1,0 +1,1367 @@
+[
+    {
+        "NearbyDevice": "2c6ad2ca-567f-2522-d86d-da79ce661d21",
+        "RSSI": -95,
+        "Distance": 35.51
+    },
+    {
+        "NearbyDevice": "56f2faac-223d-3bf0-8b67-7ee525217b3b",
+        "RSSI": -79,
+        "Distance": 8.65
+    },
+    {
+        "NearbyDevice": "707e9e01-67e8-f14a-aaba-897ea2934ca4",
+        "RSSI": -68,
+        "Distance": 2.8
+    },
+    {
+        "NearbyDevice": "78493ff6-5a7f-bd70-21d1-2f45a1728b98",
+        "RSSI": -77,
+        "Distance": 7.12
+    },
+    {
+        "NearbyDevice": "d00b78c4-6bef-e4da-de1d-144aceb81dac",
+        "RSSI": -83,
+        "Distance": 12.61
+    },
+    {
+        "NearbyDevice": "46c21be4-9a4f-6647-fe2c-6c97bf37f340",
+        "RSSI": -75,
+        "Distance": 5.83
+    },
+    {
+        "NearbyDevice": "64b0c3a9-729c-04b7-81ca-7a586e2cd59e",
+        "RSSI": -94,
+        "Distance": 32.74
+    },
+    {
+        "NearbyDevice": "0c0f7f41-7284-8b2f-794a-3f9ba4b5e9f0",
+        "RSSI": -69,
+        "Distance": 3.12
+    },
+    {
+        "NearbyDevice": "d95230f1-3ddc-fa2d-9812-cc0f79b368ae",
+        "RSSI": -63,
+        "Distance": 1.6
+    },
+    {
+        "NearbyDevice": "90a750f5-b681-271c-17d4-dc6f93893aca",
+        "RSSI": -66,
+        "Distance": 2.25
+    },
+    {
+        "NearbyDevice": "0ae655c1-ebcd-d8c1-43d9-75540553fc65",
+        "RSSI": -97,
+        "Distance": 41.68
+    },
+    {
+        "NearbyDevice": "685cd9f4-4f8d-fc9f-7302-c96804e1c5b2",
+        "RSSI": -69,
+        "Distance": 3.12
+    },
+    {
+        "NearbyDevice": "2e537c9b-6d62-5881-3418-c0c05ed384f7",
+        "RSSI": -96,
+        "Distance": 38.49
+    },
+    {
+        "NearbyDevice": "7eec4b4e-97e9-f26e-4bd2-b33c0963e823",
+        "RSSI": -80,
+        "Distance": 9.52
+    },
+    {
+        "NearbyDevice": "1a33e035-6196-f119-47dd-2447cff2ceaf",
+        "RSSI": -80,
+        "Distance": 9.52
+    },
+    {
+        "NearbyDevice": "193d8e16-d95a-41db-3b3d-3812b6422124",
+        "RSSI": -79,
+        "Distance": 8.65
+    },
+    {
+        "NearbyDevice": "ddf41307-dedf-f66c-07f6-e8154128a295",
+        "RSSI": -78,
+        "Distance": 7.85
+    },
+    {
+        "NearbyDevice": "9be1aae1-caeb-3b77-168d-8e490771fe65",
+        "RSSI": -74,
+        "Distance": 5.27
+    },
+    {
+        "NearbyDevice": "a79cb15f-1cb9-248a-aba7-e1d683fcba5c",
+        "RSSI": -77,
+        "Distance": 7.12
+    },
+    {
+        "NearbyDevice": "d9615946-5c7a-1d16-6be5-06fb8ce4f7bf",
+        "RSSI": -74,
+        "Distance": 5.27
+    },
+    {
+        "NearbyDevice": "50e937b3-0fbc-0066-4121-7559d149d4f0",
+        "RSSI": -73,
+        "Distance": 4.76
+    },
+    {
+        "NearbyDevice": "edfb2b15-505c-0a29-e93b-a2015716109d",
+        "RSSI": -85,
+        "Distance": 15.13
+    },
+    {
+        "NearbyDevice": "6b0172b8-af5e-1c8c-11d6-c72e1341baf8",
+        "RSSI": -75,
+        "Distance": 5.83
+    },
+    {
+        "NearbyDevice": "4e85d761-40a8-262a-7503-935382bf896c",
+        "RSSI": -79,
+        "Distance": 8.65
+    },
+    {
+        "NearbyDevice": "1f68a0d3-13db-b3cd-b744-5d8d1d1910f9",
+        "RSSI": -72,
+        "Distance": 4.29
+    },
+    {
+        "NearbyDevice": "0b45bc4d-f25c-fc13-b3de-c38e7eac5d84",
+        "RSSI": -75,
+        "Distance": 5.83
+    },
+    {
+        "NearbyDevice": "b28d48da-7463-6b68-a17f-440cab722c99",
+        "RSSI": -75,
+        "Distance": 5.83
+    },
+    {
+        "NearbyDevice": "21a1a670-c295-d0f9-4fea-6320479bc39f",
+        "RSSI": -67,
+        "Distance": 2.51
+    },
+    {
+        "NearbyDevice": "c259024a-9f21-7b06-cf81-29d7e7495460",
+        "RSSI": -75,
+        "Distance": 5.83
+    },
+    {
+        "NearbyDevice": "05c8de99-b26a-67e4-d410-8ffe42c9f895",
+        "RSSI": -72,
+        "Distance": 4.29
+    },
+    {
+        "NearbyDevice": "471b6643-446a-a545-c2ac-02b1d24a5ae5",
+        "RSSI": -73,
+        "Distance": 4.76
+    },
+    {
+        "NearbyDevice": "13d4f4ed-6975-17c9-864b-a006be589b0d",
+        "RSSI": -74,
+        "Distance": 5.27
+    },
+    {
+        "NearbyDevice": "59c463a0-f17f-8cde-0a1b-7e8a78aabb19",
+        "RSSI": -65,
+        "Distance": 2.01
+    },
+    {
+        "NearbyDevice": "aeb173ec-355e-9ebb-f94a-1223f477bf13",
+        "RSSI": -80,
+        "Distance": 9.52
+    },
+    {
+        "NearbyDevice": "4fbf7d54-ff4a-97a6-e1c9-8247eb3667f0",
+        "RSSI": -66,
+        "Distance": 2.25
+    },
+    {
+        "NearbyDevice": "dfc4c83d-25fb-699d-e281-d1267f1040b3",
+        "RSSI": -70,
+        "Distance": 3.47
+    },
+    {
+        "NearbyDevice": "a7146045-f595-f5b2-764d-e952d70a8979",
+        "RSSI": -67,
+        "Distance": 2.51
+    },
+    {
+        "NearbyDevice": "adb66432-3255-0ff8-5cf6-385c2646419b",
+        "RSSI": -88,
+        "Distance": 19.73
+    },
+    {
+        "NearbyDevice": "e941d402-113d-936d-7c91-1beb5d00b319",
+        "RSSI": -80,
+        "Distance": 9.52
+    },
+    {
+        "NearbyDevice": "8c4156e9-768d-d655-68b1-f7b824f6ca6f",
+        "RSSI": -74,
+        "Distance": 5.27
+    },
+    {
+        "NearbyDevice": "955d5e09-b5a7-ef65-cb77-ebe73d312067",
+        "RSSI": -81,
+        "Distance": 10.47
+    },
+    {
+        "NearbyDevice": "52935947-c673-df8e-630a-01329bf5b5a0",
+        "RSSI": -74,
+        "Distance": 5.27
+    },
+    {
+        "NearbyDevice": "359ccafb-ae2c-3aed-8b1f-50e2fe34c710",
+        "RSSI": -65,
+        "Distance": 2.01
+    },
+    {
+        "NearbyDevice": "03f0cde3-66e9-3579-dc91-b88f376038d9",
+        "RSSI": -68,
+        "Distance": 2.8
+    },
+    {
+        "NearbyDevice": "07742291-8114-46a3-e8b3-c864a38b7e23",
+        "RSSI": -68,
+        "Distance": 2.8
+    },
+    {
+        "NearbyDevice": "6e6d07ac-6f4d-51e5-d97d-dbf085cff8d6",
+        "RSSI": -71,
+        "Distance": 3.86
+    },
+    {
+        "NearbyDevice": "5ab61399-518c-5a3e-33d2-847a1a81759d",
+        "RSSI": -80,
+        "Distance": 9.52
+    },
+    {
+        "NearbyDevice": "19e58206-bc77-ee81-175a-b40a3fdbb91d",
+        "RSSI": -66,
+        "Distance": 2.25
+    },
+    {
+        "NearbyDevice": "a350ad05-af52-dde1-7575-bd5bc70977a9",
+        "RSSI": -68,
+        "Distance": 2.8
+    },
+    {
+        "NearbyDevice": "4ecb48ec-8b77-0c2e-fd56-c61fc0b9c374",
+        "RSSI": -78,
+        "Distance": 7.85
+    },
+    {
+        "NearbyDevice": "6109b511-3617-3a96-23b3-508379cec084",
+        "RSSI": -72,
+        "Distance": 4.29
+    },
+    {
+        "NearbyDevice": "ee3e3d55-472a-b18e-1d28-c3231a5e011e",
+        "RSSI": -74,
+        "Distance": 5.27
+    },
+    {
+        "NearbyDevice": "73a0fd84-6840-67e2-b5ff-ad086049464c",
+        "RSSI": -79,
+        "Distance": 8.65
+    },
+    {
+        "NearbyDevice": "abef878e-4ffe-5bb5-a3d5-4c1280b9f117",
+        "RSSI": -85,
+        "Distance": 15.13
+    },
+    {
+        "NearbyDevice": "7a83a05d-2c97-33dc-afde-f72a4a87fc6e",
+        "RSSI": -76,
+        "Distance": 6.45
+    },
+    {
+        "NearbyDevice": "b56e648f-1334-5c51-411d-ea574daea9a9",
+        "RSSI": -77,
+        "Distance": 7.12
+    },
+    {
+        "NearbyDevice": "69d1b6ac-61e9-d6ad-2874-2aa60fa53a93",
+        "RSSI": -70,
+        "Distance": 3.47
+    },
+    {
+        "NearbyDevice": "83d1651b-66a8-c398-4fe0-35489ca6a40b",
+        "RSSI": -58,
+        "Distance": 0.84
+    },
+    {
+        "NearbyDevice": "d8e8cc65-98a4-932f-cebf-c576c8401be3",
+        "RSSI": -78,
+        "Distance": 7.85
+    },
+    {
+        "NearbyDevice": "e95bf0fe-45b5-bc71-cc2d-da17ae00ddf9",
+        "RSSI": -87,
+        "Distance": 18.08
+    },
+    {
+        "NearbyDevice": "1aa915a1-3aea-4064-2e5b-99cc830ab531",
+        "RSSI": -76,
+        "Distance": 6.45
+    },
+    {
+        "NearbyDevice": "37feafef-e286-6147-bfdb-634678831669",
+        "RSSI": -79,
+        "Distance": 8.65
+    },
+    {
+        "NearbyDevice": "0507b098-93e6-8715-b87d-cff07786dda6",
+        "RSSI": -75,
+        "Distance": 5.83
+    },
+    {
+        "NearbyDevice": "b1a52b14-76aa-d8cd-3924-bbfc11dee04c",
+        "RSSI": -91,
+        "Distance": 25.52
+    },
+    {
+        "NearbyDevice": "819bf5f6-1ae2-fef5-d58c-7caed0aa4e4b",
+        "RSSI": -89,
+        "Distance": 21.52
+    },
+    {
+        "NearbyDevice": "3f7556c6-77e7-fc17-1db5-cbd9450fa3f2",
+        "RSSI": -72,
+        "Distance": 4.29
+    },
+    {
+        "NearbyDevice": "d8f53fe2-ac5c-2d73-d9dd-d81b971ff39d",
+        "RSSI": -80,
+        "Distance": 9.52
+    },
+    {
+        "NearbyDevice": "9df04033-4ada-7e99-7fd3-d6b9ccf63f92",
+        "RSSI": -84,
+        "Distance": 13.82
+    },
+    {
+        "NearbyDevice": "54ec32fb-03b1-8c8a-eb1f-8f434208b754",
+        "RSSI": -69,
+        "Distance": 3.12
+    },
+    {
+        "NearbyDevice": "f81d8019-fe3d-f9e1-97cd-c6f0f98b2129",
+        "RSSI": -77,
+        "Distance": 7.12
+    },
+    {
+        "NearbyDevice": "ba09a606-3569-2e0f-ff7b-0d3718322cb0",
+        "RSSI": -69,
+        "Distance": 3.12
+    },
+    {
+        "NearbyDevice": "a46f3bb9-090f-4ffe-5354-9a31b62369ea",
+        "RSSI": -82,
+        "Distance": 11.49
+    },
+    {
+        "NearbyDevice": "617ee077-f91b-9bb9-7c2c-1b762e5918f0",
+        "RSSI": -91,
+        "Distance": 25.52
+    },
+    {
+        "NearbyDevice": "3d6149ec-1b40-e348-3857-a2fcf6dd6473",
+        "RSSI": -85,
+        "Distance": 15.13
+    },
+    {
+        "NearbyDevice": "997ed2d7-4eb1-08b7-c3bd-6d5b59ceaa39",
+        "RSSI": -67,
+        "Distance": 2.51
+    },
+    {
+        "NearbyDevice": "cca718ff-37a3-1411-7cf7-8e9c1418e184",
+        "RSSI": -92,
+        "Distance": 27.75
+    },
+    {
+        "NearbyDevice": "b0fcd81e-58fa-4893-e423-dc7ca885a6a9",
+        "RSSI": -71,
+        "Distance": 3.86
+    },
+    {
+        "NearbyDevice": "2e395097-2a32-2b84-b04a-7265dd2052c8",
+        "RSSI": -83,
+        "Distance": 12.61
+    },
+    {
+        "NearbyDevice": "3fe8769b-c98b-7423-013b-c778f460b1df",
+        "RSSI": -75,
+        "Distance": 5.83
+    },
+    {
+        "NearbyDevice": "a768f0c2-ef7a-c1ec-7e5d-375bf80b1ec9",
+        "RSSI": -71,
+        "Distance": 3.86
+    },
+    {
+        "NearbyDevice": "611b6d03-ea65-d7a1-cea5-c9eaec5db442",
+        "RSSI": -76,
+        "Distance": 6.45
+    },
+    {
+        "NearbyDevice": "2bc20a2f-3283-8d4a-ff6a-76c2fbc56e1b",
+        "RSSI": -73,
+        "Distance": 4.76
+    },
+    {
+        "NearbyDevice": "ef8643f5-1e11-c3db-84ef-f76058f8c2a7",
+        "RSSI": -67,
+        "Distance": 2.51
+    },
+    {
+        "NearbyDevice": "67737161-ba25-1f0a-0751-46b108c23486",
+        "RSSI": -64,
+        "Distance": 1.8
+    },
+    {
+        "NearbyDevice": "1512d2d4-f72f-1880-d5d8-4ec0d82381b7",
+        "RSSI": -72,
+        "Distance": 4.29
+    },
+    {
+        "NearbyDevice": "1e27d716-befb-6199-4961-64a71634df36",
+        "RSSI": -76,
+        "Distance": 6.45
+    },
+    {
+        "NearbyDevice": "12edd54c-3224-fd95-2fd4-44b71fd5fe0c",
+        "RSSI": -70,
+        "Distance": 3.47
+    },
+    {
+        "NearbyDevice": "91fceb8c-113c-dcfd-18ef-33875a45ed52",
+        "RSSI": -90,
+        "Distance": 23.44
+    },
+    {
+        "NearbyDevice": "9a8b5e34-70c5-fd1f-e107-50d144391760",
+        "RSSI": -78,
+        "Distance": 7.85
+    },
+    {
+        "NearbyDevice": "ca01b3c1-1c66-f1e1-bfa1-c423a5126e35",
+        "RSSI": -68,
+        "Distance": 2.8
+    },
+    {
+        "NearbyDevice": "97512768-bd5f-a613-0f9c-71fb9a5e6975",
+        "RSSI": -86,
+        "Distance": 16.55
+    },
+    {
+        "NearbyDevice": "e7f58f7f-865b-35ae-17fb-4bdfea5935e9",
+        "RSSI": -73,
+        "Distance": 4.76
+    },
+    {
+        "NearbyDevice": "9dc6013b-22d5-c95b-2916-c5c553e56690",
+        "RSSI": -71,
+        "Distance": 3.86
+    },
+    {
+        "NearbyDevice": "0537c422-9978-e149-0ab4-b8dda9adce49",
+        "RSSI": -71,
+        "Distance": 3.86
+    },
+    {
+        "NearbyDevice": "e92f5c27-8be5-493c-3f8d-c97ba09a785b",
+        "RSSI": -70,
+        "Distance": 3.47
+    },
+    {
+        "NearbyDevice": "341c1a97-efee-649d-9469-b114b28feee2",
+        "RSSI": -72,
+        "Distance": 4.29
+    },
+    {
+        "NearbyDevice": "51ae23ee-7671-fb0e-98b0-98f5db69be42",
+        "RSSI": -74,
+        "Distance": 5.27
+    },
+    {
+        "NearbyDevice": "8a4c2f71-5d41-2403-fe91-db96462fd66c",
+        "RSSI": -67,
+        "Distance": 2.51
+    },
+    {
+        "NearbyDevice": "a8a742e5-32a3-a122-d557-132967c26fa3",
+        "RSSI": -75,
+        "Distance": 5.83
+    },
+    {
+        "NearbyDevice": "e19139eb-1da7-711f-3e47-869dabbd83d5",
+        "RSSI": -78,
+        "Distance": 7.85
+    },
+    {
+        "NearbyDevice": "3cd0d223-21b7-d1b3-3993-5d2a2a7baebc",
+        "RSSI": -74,
+        "Distance": 5.27
+    },
+    {
+        "NearbyDevice": "20374d03-2852-e3f6-bc07-2ac2399860fd",
+        "RSSI": -72,
+        "Distance": 4.29
+    },
+    {
+        "NearbyDevice": "ef6cf7f3-06e9-9ea2-f216-deddb179380d",
+        "RSSI": -84,
+        "Distance": 13.82
+    },
+    {
+        "NearbyDevice": "8af95367-3d11-8cb0-83f7-1e109f8663f4",
+        "RSSI": -74,
+        "Distance": 5.27
+    },
+    {
+        "NearbyDevice": "4f8449c7-dddf-07ab-438a-6ec32e05979c",
+        "RSSI": -88,
+        "Distance": 19.73
+    },
+    {
+        "NearbyDevice": "ac7fca15-105c-3119-95ac-a0a08af2efe1",
+        "RSSI": -77,
+        "Distance": 7.12
+    },
+    {
+        "NearbyDevice": "e84b8fac-7270-0d45-a48d-b992ccca644e",
+        "RSSI": -86,
+        "Distance": 16.55
+    },
+    {
+        "NearbyDevice": "a7e47dee-c635-c7b2-5450-112552063158",
+        "RSSI": -81,
+        "Distance": 10.47
+    },
+    {
+        "NearbyDevice": "c13e0608-ae22-1451-449b-18c0f2ab2342",
+        "RSSI": -80,
+        "Distance": 9.52
+    },
+    {
+        "NearbyDevice": "8a3af32f-7f88-cb7b-b963-22c5d0dab475",
+        "RSSI": -69,
+        "Distance": 3.12
+    },
+    {
+        "NearbyDevice": "5ef28a14-c778-bd22-8108-d43df209244f",
+        "RSSI": -69,
+        "Distance": 3.12
+    },
+    {
+        "NearbyDevice": "47a9c265-a23e-9d28-61ef-153d04eac0af",
+        "RSSI": -77,
+        "Distance": 7.12
+    },
+    {
+        "NearbyDevice": "98585de0-2dba-0e74-b9a0-c18e62788cb6",
+        "RSSI": -72,
+        "Distance": 4.29
+    },
+    {
+        "NearbyDevice": "be70b850-1282-14ad-e9d2-12970742f956",
+        "RSSI": -66,
+        "Distance": 2.25
+    },
+    {
+        "NearbyDevice": "f72b336f-988d-fb30-e9e5-9ef773d93b53",
+        "RSSI": -80,
+        "Distance": 9.52
+    },
+    {
+        "NearbyDevice": "66f911f0-885c-c061-43e2-5c1700bfb62b",
+        "RSSI": -79,
+        "Distance": 8.65
+    },
+    {
+        "NearbyDevice": "fb66705b-c643-44c9-aeae-0d3640af709c",
+        "RSSI": -88,
+        "Distance": 19.73
+    },
+    {
+        "NearbyDevice": "b32555a7-939a-e397-6b46-8d44a1e97249",
+        "RSSI": -70,
+        "Distance": 3.47
+    },
+    {
+        "NearbyDevice": "ed0e2e42-33a9-1e71-e304-99c7ab3536ef",
+        "RSSI": -88,
+        "Distance": 19.73
+    },
+    {
+        "NearbyDevice": "5189746d-7eac-accb-e0cb-e6efafaad6ae",
+        "RSSI": -64,
+        "Distance": 1.8
+    },
+    {
+        "NearbyDevice": "668482f5-f165-44fb-751a-360a1da1178c",
+        "RSSI": -80,
+        "Distance": 9.52
+    },
+    {
+        "NearbyDevice": "1b2bcdb6-d0cc-6c11-505a-86fb502d67bc",
+        "RSSI": -78,
+        "Distance": 7.85
+    },
+    {
+        "NearbyDevice": "e3d6e82c-506b-a3d2-710d-1253d4fed1dc",
+        "RSSI": 127,
+        "Distance": 2135.59
+    },
+    {
+        "NearbyDevice": "ed6f76ad-cfdc-4dec-c627-60c472301034",
+        "RSSI": -81,
+        "Distance": 10.47
+    },
+    {
+        "NearbyDevice": "301a9403-940e-3b81-1acf-71ca5ccbdf76",
+        "RSSI": -94,
+        "Distance": 32.74
+    },
+    {
+        "NearbyDevice": "c2db3e12-b9c9-4d0d-035f-a19fc1e0a479",
+        "RSSI": -75,
+        "Distance": 5.83
+    },
+    {
+        "NearbyDevice": "5b203350-8c8a-e2f7-f4fb-683f6b66d196",
+        "RSSI": -75,
+        "Distance": 5.83
+    },
+    {
+        "NearbyDevice": "a781ae48-5ee5-d98b-c6e4-5e5e59ade397",
+        "RSSI": -61,
+        "Distance": 1.27
+    },
+    {
+        "NearbyDevice": "b9faddb9-5fe7-d56f-8248-6013cf924ed9",
+        "RSSI": -64,
+        "Distance": 1.8
+    },
+    {
+        "NearbyDevice": "2cf4e27b-ec0f-aa90-2efb-7ccc7f85d73d",
+        "RSSI": -63,
+        "Distance": 1.6
+    },
+    {
+        "NearbyDevice": "d3e0aa28-f429-3885-b55c-c7cb4f2c09c5",
+        "RSSI": -88,
+        "Distance": 19.73
+    },
+    {
+        "NearbyDevice": "37b490df-d2bb-1ab8-06ac-5d7b54d49de5",
+        "RSSI": -90,
+        "Distance": 23.44
+    },
+    {
+        "NearbyDevice": "73941cd4-0ad7-2bb7-db9f-6cae07008fee",
+        "RSSI": -81,
+        "Distance": 10.47
+    },
+    {
+        "NearbyDevice": "4b802784-3f01-2151-1489-77834207ea6f",
+        "RSSI": -98,
+        "Distance": 45.1
+    },
+    {
+        "NearbyDevice": "a3d4c1fe-d428-cd97-7038-6807bf9f5ae4",
+        "RSSI": -90,
+        "Distance": 23.44
+    },
+    {
+        "NearbyDevice": "80209a9d-aae4-0b48-3b07-ceef2e3e51ea",
+        "RSSI": -79,
+        "Distance": 8.65
+    },
+    {
+        "NearbyDevice": "10563cd9-0ec1-2311-3e4f-03005bd9fd34",
+        "RSSI": -98,
+        "Distance": 45.1
+    },
+    {
+        "NearbyDevice": "a8c8c5bd-ed25-3f09-324d-9079f4ca19fb",
+        "RSSI": -89,
+        "Distance": 21.52
+    },
+    {
+        "NearbyDevice": "26bf3a63-a08d-2af9-f071-31083427ca59",
+        "RSSI": -93,
+        "Distance": 30.16
+    },
+    {
+        "NearbyDevice": "86d27f6d-2b05-13ef-217d-ef732d46bc8c",
+        "RSSI": -87,
+        "Distance": 18.08
+    },
+    {
+        "NearbyDevice": "9db74fad-2b80-5d55-5be4-c9405a3cee84",
+        "RSSI": -87,
+        "Distance": 18.08
+    },
+    {
+        "NearbyDevice": "2296ca60-ebc6-41e2-a0f3-84bc495b9b75",
+        "RSSI": -70,
+        "Distance": 3.47
+    },
+    {
+        "NearbyDevice": "0c861d30-668f-3fd7-5bb1-8e21aa0416b4",
+        "RSSI": -85,
+        "Distance": 15.13
+    },
+    {
+        "NearbyDevice": "7e6c2f1c-6c25-d33c-18b3-400d53b596dc",
+        "RSSI": -73,
+        "Distance": 4.76
+    },
+    {
+        "NearbyDevice": "a0172b41-c3dd-f9f3-f0ee-f2df249552c9",
+        "RSSI": -92,
+        "Distance": 27.75
+    },
+    {
+        "NearbyDevice": "12ed8f79-e170-d825-2c8e-9e5e6f26e7d6",
+        "RSSI": -87,
+        "Distance": 18.08
+    },
+    {
+        "NearbyDevice": "10b52192-c037-a764-540b-8f795f7a6d54",
+        "RSSI": -87,
+        "Distance": 18.08
+    },
+    {
+        "NearbyDevice": "0f0ba401-36f9-f675-242d-1f613e127a1b",
+        "RSSI": -54,
+        "Distance": 0.41
+    },
+    {
+        "NearbyDevice": "4397c269-d1b7-b645-2ec8-6ae79871add6",
+        "RSSI": -69,
+        "Distance": 3.12
+    },
+    {
+        "NearbyDevice": "6eb1e255-5bd7-a188-c024-19c0837fad95",
+        "RSSI": -91,
+        "Distance": 25.52
+    },
+    {
+        "NearbyDevice": "543787da-e113-378e-60ab-f9aca2e8e0a9",
+        "RSSI": -91,
+        "Distance": 25.52
+    },
+    {
+        "NearbyDevice": "d8ab3bcf-b5d6-ff86-4a61-220e9fb1c66a",
+        "RSSI": -97,
+        "Distance": 41.68
+    },
+    {
+        "NearbyDevice": "f15949bf-4d8f-c2b0-8cf8-19f1e7ec415e",
+        "RSSI": -70,
+        "Distance": 3.47
+    },
+    {
+        "NearbyDevice": "a2c8cec1-fcd9-2184-241c-a49070d636ae",
+        "RSSI": -88,
+        "Distance": 19.73
+    },
+    {
+        "NearbyDevice": "69409b22-859b-72d8-678f-f1acbc03b18f",
+        "RSSI": -94,
+        "Distance": 32.74
+    },
+    {
+        "NearbyDevice": "468f08cb-77b1-4f08-aea2-62cf1787264d",
+        "RSSI": -91,
+        "Distance": 25.52
+    },
+    {
+        "NearbyDevice": "92755451-4bf4-0d63-ed6b-488c02375102",
+        "RSSI": -95,
+        "Distance": 35.51
+    },
+    {
+        "NearbyDevice": "c2c2775c-2db8-6124-5cd5-1929417867f0",
+        "RSSI": -90,
+        "Distance": 23.44
+    },
+    {
+        "NearbyDevice": "8b9429ce-6b6e-4c30-fde6-e6ce542656ec",
+        "RSSI": -82,
+        "Distance": 11.49
+    },
+    {
+        "NearbyDevice": "5c8cac44-d1e6-97bb-7cb3-45293c00cd71",
+        "RSSI": -97,
+        "Distance": 41.68
+    },
+    {
+        "NearbyDevice": "b2633100-acb5-6721-0e75-975f5997233c",
+        "RSSI": -90,
+        "Distance": 23.44
+    },
+    {
+        "NearbyDevice": "10b54120-4356-16b7-bc46-c70aa1cf6500",
+        "RSSI": -91,
+        "Distance": 25.52
+    },
+    {
+        "NearbyDevice": "db959b5d-ed3a-c901-dff5-692e379f087d",
+        "RSSI": -86,
+        "Distance": 16.55
+    },
+    {
+        "NearbyDevice": "5129196a-51df-3a9e-6e8f-8de581caeae2",
+        "RSSI": -84,
+        "Distance": 13.82
+    },
+    {
+        "NearbyDevice": "76e521a2-f56d-8443-da9f-a6f75baf921d",
+        "RSSI": -95,
+        "Distance": 35.51
+    },
+    {
+        "NearbyDevice": "6855b55b-8543-4f7a-122f-c71056d5b465",
+        "RSSI": -71,
+        "Distance": 3.86
+    },
+    {
+        "NearbyDevice": "14f3cc01-414e-0d5a-d128-c6a684cb1ce4",
+        "RSSI": -56,
+        "Distance": 0.59
+    },
+    {
+        "NearbyDevice": "60ca84b1-88a5-bb73-671c-24f1a7dcb6e5",
+        "RSSI": -81,
+        "Distance": 10.47
+    },
+    {
+        "NearbyDevice": "9dd92a43-393d-a569-e826-1083670d45c1",
+        "RSSI": -93,
+        "Distance": 30.16
+    },
+    {
+        "NearbyDevice": "98f4bfa5-7d34-7d31-5854-20ea7277c256",
+        "RSSI": -83,
+        "Distance": 12.61
+    },
+    {
+        "NearbyDevice": "2d8a46fa-0e10-d85a-8e40-bab785638fcc",
+        "RSSI": -74,
+        "Distance": 5.27
+    },
+    {
+        "NearbyDevice": "00cb69e6-70e6-715a-a466-2f5b95e96bd6",
+        "RSSI": -79,
+        "Distance": 8.65
+    },
+    {
+        "NearbyDevice": "858b2272-9acf-1d81-2e7b-7640a74c69f8",
+        "RSSI": -83,
+        "Distance": 12.61
+    },
+    {
+        "NearbyDevice": "968d957a-6553-3474-1074-7ea76316ed59",
+        "RSSI": -80,
+        "Distance": 9.52
+    },
+    {
+        "NearbyDevice": "b3745548-4514-bfd4-b83a-206856e29ab9",
+        "RSSI": -93,
+        "Distance": 30.16
+    },
+    {
+        "NearbyDevice": "0fddafb4-b49d-d1e7-7279-32ce81790bd8",
+        "RSSI": -96,
+        "Distance": 38.49
+    },
+    {
+        "NearbyDevice": "24ed17b6-04dc-5088-81d8-a480c1cd98f7",
+        "RSSI": -85,
+        "Distance": 15.13
+    },
+    {
+        "NearbyDevice": "79b7369a-8101-cd1d-b1cc-df0938a7dd0c",
+        "RSSI": -72,
+        "Distance": 4.29
+    },
+    {
+        "NearbyDevice": "2c413b2a-3f1a-41ef-e106-5e6d67fbe93d",
+        "RSSI": -70,
+        "Distance": 3.47
+    },
+    {
+        "NearbyDevice": "42bafac9-a57e-99f9-b2ba-8aec045eb9b4",
+        "RSSI": -95,
+        "Distance": 35.51
+    },
+    {
+        "NearbyDevice": "3887ee38-cfed-974d-93e7-e90b3472f18a",
+        "RSSI": -95,
+        "Distance": 35.51
+    },
+    {
+        "NearbyDevice": "f9eb920a-13c7-a916-7995-2ea53d5cc52d",
+        "RSSI": -73,
+        "Distance": 4.76
+    },
+    {
+        "NearbyDevice": "a984ce3d-2774-8207-7447-75d6f1907434",
+        "RSSI": -69,
+        "Distance": 3.12
+    },
+    {
+        "NearbyDevice": "0b57a844-b2f1-62ff-9c5d-ce347922bc6d",
+        "RSSI": -73,
+        "Distance": 4.76
+    },
+    {
+        "NearbyDevice": "962b51a7-6864-25df-17cf-448d170e2f17",
+        "RSSI": -83,
+        "Distance": 12.61
+    },
+    {
+        "NearbyDevice": "0cf312c4-8fc9-cbd1-149c-3e2d09b4deab",
+        "RSSI": -84,
+        "Distance": 13.82
+    },
+    {
+        "NearbyDevice": "4ba290c6-4c50-566c-b341-95689c915c78",
+        "RSSI": -76,
+        "Distance": 6.45
+    },
+    {
+        "NearbyDevice": "3883f0a7-c2cf-7e89-739b-ebf07ab980ce",
+        "RSSI": -88,
+        "Distance": 19.73
+    },
+    {
+        "NearbyDevice": "42c8a817-a9ae-cf2b-47f2-1bbd756a602c",
+        "RSSI": -92,
+        "Distance": 27.75
+    },
+    {
+        "NearbyDevice": "ba477d7b-3ca2-5d62-f78f-bcd453e77d5e",
+        "RSSI": -94,
+        "Distance": 32.74
+    },
+    {
+        "NearbyDevice": "2c4d7666-52d5-5c54-cd8f-a181d8da0ba0",
+        "RSSI": -83,
+        "Distance": 12.61
+    },
+    {
+        "NearbyDevice": "fdb7f08e-1193-6740-547a-103608b64e91",
+        "RSSI": -94,
+        "Distance": 32.74
+    },
+    {
+        "NearbyDevice": "5f2c43df-d3bd-d4cc-1ced-3765bda9f9b6",
+        "RSSI": -87,
+        "Distance": 18.08
+    },
+    {
+        "NearbyDevice": "3b05793a-c018-edfc-371a-84b0386630a3",
+        "RSSI": -87,
+        "Distance": 18.08
+    },
+    {
+        "NearbyDevice": "67ddc411-82b6-1ae1-ff02-a84f42a166f4",
+        "RSSI": -68,
+        "Distance": 2.8
+    },
+    {
+        "NearbyDevice": "1cb48dfd-d67c-f18a-1f07-8ccb084aedde",
+        "RSSI": -93,
+        "Distance": 30.16
+    },
+    {
+        "NearbyDevice": "0d02a957-d53a-d261-b92a-d119828ae580",
+        "RSSI": -87,
+        "Distance": 18.08
+    },
+    {
+        "NearbyDevice": "e1f3c713-cccd-248f-a6dd-1aca381b8508",
+        "RSSI": -82,
+        "Distance": 11.49
+    },
+    {
+        "NearbyDevice": "1296b282-6c23-e693-0127-e3659f241444",
+        "RSSI": -96,
+        "Distance": 38.49
+    },
+    {
+        "NearbyDevice": "291c38da-0c00-8372-34d6-2fc71bceb954",
+        "RSSI": -83,
+        "Distance": 12.61
+    },
+    {
+        "NearbyDevice": "018c8942-8c7a-8ec6-fc08-5191e038e65f",
+        "RSSI": 127,
+        "Distance": 2135.59
+    },
+    {
+        "NearbyDevice": "f9c297eb-4046-7911-5ddf-6282ca977137",
+        "RSSI": -75,
+        "Distance": 5.83
+    },
+    {
+        "NearbyDevice": "94280984-e864-c35d-e1e6-ed96a1b9ee5b",
+        "RSSI": -88,
+        "Distance": 19.73
+    },
+    {
+        "NearbyDevice": "f264420a-4139-b82d-0db4-954bb3ece81d",
+        "RSSI": -95,
+        "Distance": 35.51
+    },
+    {
+        "NearbyDevice": "d3a354a3-ae63-3eb3-e88d-ea45a5e20c76",
+        "RSSI": -83,
+        "Distance": 12.61
+    },
+    {
+        "NearbyDevice": "ed2ffb58-75b2-3d12-ed75-b62d81338351",
+        "RSSI": -93,
+        "Distance": 30.16
+    },
+    {
+        "NearbyDevice": "49176a11-f75b-0ccb-2fdd-12b830a4f5c8",
+        "RSSI": -81,
+        "Distance": 10.47
+    },
+    {
+        "NearbyDevice": "19c94cb6-748c-f233-4d80-ec9f277c8de2",
+        "RSSI": -84,
+        "Distance": 13.82
+    },
+    {
+        "NearbyDevice": "35e362e7-5401-0c04-978b-c05c6377d477",
+        "RSSI": -73,
+        "Distance": 4.76
+    },
+    {
+        "NearbyDevice": "cfe557cc-7f97-6d3b-508e-66fa06ea8f59",
+        "RSSI": -84,
+        "Distance": 13.82
+    },
+    {
+        "NearbyDevice": "4af404cf-e5dd-a00b-41cf-a144978bda77",
+        "RSSI": -79,
+        "Distance": 8.65
+    },
+    {
+        "NearbyDevice": "2f8165a0-58dc-73e8-c823-0eb034cc5aa2",
+        "RSSI": -88,
+        "Distance": 19.73
+    },
+    {
+        "NearbyDevice": "7e28de24-87c8-fe34-4f5c-709dca3e55d2",
+        "RSSI": -91,
+        "Distance": 25.52
+    },
+    {
+        "NearbyDevice": "bd1e98ed-638e-1c19-bf3d-47a90b242784",
+        "RSSI": -87,
+        "Distance": 18.08
+    },
+    {
+        "NearbyDevice": "b4c62806-a1d4-18b5-f9f4-c49834430b58",
+        "RSSI": -84,
+        "Distance": 13.82
+    },
+    {
+        "NearbyDevice": "5e2d63c9-6de3-98d2-e6d2-42e526c7deab",
+        "RSSI": -93,
+        "Distance": 30.16
+    },
+    {
+        "NearbyDevice": "9b590114-e44a-a295-8d91-fd8bbd3624b0",
+        "RSSI": -95,
+        "Distance": 35.51
+    },
+    {
+        "NearbyDevice": "aeb4099f-96d7-33c8-5e8d-0d15f1388cea",
+        "RSSI": -88,
+        "Distance": 19.73
+    },
+    {
+        "NearbyDevice": "03437211-e73d-a0b9-2af1-e7a05a4d2abe",
+        "RSSI": -92,
+        "Distance": 27.75
+    },
+    {
+        "NearbyDevice": "59f7634d-a81e-9b43-f643-77345d7bdb19",
+        "RSSI": -87,
+        "Distance": 18.08
+    },
+    {
+        "NearbyDevice": "5bdf067f-f728-50de-d687-5d2626216435",
+        "RSSI": -89,
+        "Distance": 21.52
+    },
+    {
+        "NearbyDevice": "73f8894e-8a43-3b81-6791-6fdb5ba1e2d1",
+        "RSSI": -73,
+        "Distance": 4.76
+    },
+    {
+        "NearbyDevice": "82c987ed-0b81-24dd-e22c-2b13e1de7fe0",
+        "RSSI": -55,
+        "Distance": 0.5
+    },
+    {
+        "NearbyDevice": "b2a20542-0ac2-e856-00ab-3769376baf65",
+        "RSSI": -69,
+        "Distance": 3.12
+    },
+    {
+        "NearbyDevice": "19fb4aa8-6ab0-2ec8-6d8e-ae562ebecadd",
+        "RSSI": -98,
+        "Distance": 45.1
+    },
+    {
+        "NearbyDevice": "f948fb61-98c4-cd3a-f244-b2d4ed1b3f1c",
+        "RSSI": -89,
+        "Distance": 21.52
+    },
+    {
+        "NearbyDevice": "28750d9a-457d-bab2-4d7e-8ad5698942dc",
+        "RSSI": -94,
+        "Distance": 32.74
+    },
+    {
+        "NearbyDevice": "dea8c936-b2f1-1664-920a-d381a56cb4ee",
+        "RSSI": -86,
+        "Distance": 16.55
+    },
+    {
+        "NearbyDevice": "86301969-24ac-a4f2-f2d6-f2aad04fa4e8",
+        "RSSI": -92,
+        "Distance": 27.75
+    },
+    {
+        "NearbyDevice": "489a31ef-a486-8e14-b883-6de8cddbbf96",
+        "RSSI": -88,
+        "Distance": 19.73
+    },
+    {
+        "NearbyDevice": "b170a9fb-9472-7e03-828a-84baf02f628a",
+        "RSSI": -83,
+        "Distance": 12.61
+    },
+    {
+        "NearbyDevice": "428c13c5-9a3c-db00-641c-0ccacc32cc5e",
+        "RSSI": -62,
+        "Distance": 1.43
+    },
+    {
+        "NearbyDevice": "e4e766f6-b5bf-f73c-5497-6f95786c2628",
+        "RSSI": -84,
+        "Distance": 13.82
+    },
+    {
+        "NearbyDevice": "0dddbbe0-f16e-0207-bf9b-3025d7c95fb7",
+        "RSSI": -92,
+        "Distance": 27.75
+    },
+    {
+        "NearbyDevice": "6b75128b-ad16-c10f-7d41-e70192cde029",
+        "RSSI": -93,
+        "Distance": 30.16
+    },
+    {
+        "NearbyDevice": "280b0635-f729-c3f5-ff86-34db46a1ed6b",
+        "RSSI": -89,
+        "Distance": 21.52
+    },
+    {
+        "NearbyDevice": "338a516a-cc13-08ee-fa53-9e2bc768d221",
+        "RSSI": -78,
+        "Distance": 7.85
+    },
+    {
+        "NearbyDevice": "9486e822-c76e-26d9-076d-fc935c07f4a4",
+        "RSSI": -87,
+        "Distance": 18.08
+    },
+    {
+        "NearbyDevice": "1aa05c39-bb69-6b51-df83-73f0e09b87d8",
+        "RSSI": -81,
+        "Distance": 10.47
+    },
+    {
+        "NearbyDevice": "865d8180-db12-bb60-9a31-3b08177c50b5",
+        "RSSI": -86,
+        "Distance": 16.55
+    },
+    {
+        "NearbyDevice": "69d319c1-8fc0-46c7-3cbe-e7182e4a6f44",
+        "RSSI": -98,
+        "Distance": 45.1
+    },
+    {
+        "NearbyDevice": "cb311dd5-d10f-cca1-b424-5963051b53b6",
+        "RSSI": -92,
+        "Distance": 27.75
+    },
+    {
+        "NearbyDevice": "7210576b-f944-61f3-b6f2-465f30f1ff4d",
+        "RSSI": -75,
+        "Distance": 5.83
+    },
+    {
+        "NearbyDevice": "fcc6d1f6-8fde-06a9-9509-58789282bc9d",
+        "RSSI": -96,
+        "Distance": 38.49
+    },
+    {
+        "NearbyDevice": "40ffd8af-b55f-7ebc-65fc-978073601bad",
+        "RSSI": -93,
+        "Distance": 30.16
+    },
+    {
+        "NearbyDevice": "7a03b101-d9b6-2491-361d-d904d4fbb263",
+        "RSSI": -92,
+        "Distance": 27.75
+    },
+    {
+        "NearbyDevice": "020c4007-785b-aa8c-f255-42c153548dbf",
+        "RSSI": -77,
+        "Distance": 7.12
+    },
+    {
+        "NearbyDevice": "ad683cf5-9cc3-8a9b-86a5-3df92c4c0597",
+        "RSSI": -85,
+        "Distance": 15.13
+    },
+    {
+        "NearbyDevice": "8ce8d4ec-2f1a-7ced-3dda-1bef0a39515b",
+        "RSSI": -79,
+        "Distance": 8.65
+    },
+    {
+        "NearbyDevice": "1adc0608-52e2-1c85-73a8-6a4605755a03",
+        "RSSI": -92,
+        "Distance": 27.75
+    },
+    {
+        "NearbyDevice": "6fb97ad7-fda6-5e52-c1a4-d10aa7ed6dbe",
+        "RSSI": -89,
+        "Distance": 21.52
+    },
+    {
+        "NearbyDevice": "93db1620-bdb7-e3eb-780e-f20d7e29ba42",
+        "RSSI": -75,
+        "Distance": 5.83
+    },
+    {
+        "NearbyDevice": "2ae20630-0678-efd3-8ca6-ac36a2449ee4",
+        "RSSI": -97,
+        "Distance": 41.68
+    },
+    {
+        "NearbyDevice": "210e05f0-509b-f131-341c-a479554469fc",
+        "RSSI": -71,
+        "Distance": 3.86
+    },
+    {
+        "NearbyDevice": "00ab03f8-1a12-4111-dcda-f80e1c642556",
+        "RSSI": -89,
+        "Distance": 21.52
+    },
+    {
+        "NearbyDevice": "c7a35d36-a485-eff7-f0b6-415627bf7e0d",
+        "RSSI": -80,
+        "Distance": 9.52
+    },
+    {
+        "NearbyDevice": "2c875605-a355-f2bf-fadf-71a149636a80",
+        "RSSI": -90,
+        "Distance": 23.44
+    },
+    {
+        "NearbyDevice": "3a83c68c-26bc-8703-9bc4-81bc79a331d9",
+        "RSSI": -90,
+        "Distance": 23.44
+    },
+    {
+        "NearbyDevice": "32293047-fb81-7db4-1001-58bf83943832",
+        "RSSI": -83,
+        "Distance": 12.61
+    },
+    {
+        "NearbyDevice": "631ee2c0-97be-d0f1-2b9d-b5d111e7a90f",
+        "RSSI": -88,
+        "Distance": 19.73
+    },
+    {
+        "NearbyDevice": "8e1767ea-edd1-0db8-c1aa-e2116a4dcfb0",
+        "RSSI": -86,
+        "Distance": 16.55
+    },
+    {
+        "NearbyDevice": "66ef8fd5-ee85-2f13-b543-f92a038db8be",
+        "RSSI": -84,
+        "Distance": 13.82
+    },
+    {
+        "NearbyDevice": "1403b215-aee5-8553-05b4-826fe79678d4",
+        "RSSI": -77,
+        "Distance": 7.12
+    },
+    {
+        "NearbyDevice": "a2530392-c556-c485-b740-d73ce3b065a0",
+        "RSSI": -71,
+        "Distance": 3.86
+    },
+    {
+        "NearbyDevice": "b5022695-3674-9ead-8fa5-0253710e4969",
+        "RSSI": -81,
+        "Distance": 10.47
+    },
+    {
+        "NearbyDevice": "d15fb45e-573f-2d34-10d6-17e190570f86",
+        "RSSI": -73,
+        "Distance": 4.76
+    },
+    {
+        "NearbyDevice": "3d1081cd-2c6c-7538-a8c1-1e473d61abdf",
+        "RSSI": -78,
+        "Distance": 7.85
+    },
+    {
+        "NearbyDevice": "fe1d1d01-687d-a2b5-4ca4-4aa64b8169db",
+        "RSSI": -90,
+        "Distance": 23.44
+    },
+    {
+        "NearbyDevice": "92708868-08e3-2e20-2de3-c2e5cafa0cff",
+        "RSSI": -84,
+        "Distance": 13.82
+    },
+    {
+        "NearbyDevice": "1b715f95-27f2-b547-be90-cb5590a11afb",
+        "RSSI": -96,
+        "Distance": 38.49
+    },
+    {
+        "NearbyDevice": "f2d27e11-40c2-6530-8a9e-cf8dfd568798",
+        "RSSI": -88,
+        "Distance": 19.73
+    },
+    {
+        "NearbyDevice": "6ca32752-d15f-b661-c7f1-04b6b30684fe",
+        "RSSI": -96,
+        "Distance": 38.49
+    },
+    {
+        "NearbyDevice": "8cb3dcc4-a1e4-8bfa-e7ad-173ef1e1c5cf",
+        "RSSI": -90,
+        "Distance": 23.44
+    }
+]
